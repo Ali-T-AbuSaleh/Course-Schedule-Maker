@@ -73,13 +73,13 @@ def evaluate_diff_thresholds1(diff: int) -> float:
 def evaluate_diff_thresholds2(diff: int) -> float:
     upper_limit = 5  # the limit that the expression (values) converges to.
 
-    # if an exam only got 0-1 days then I want to punish it equaly because I cant take this exam
+    # if an exam only got 0-1 days then I want to punish it equally because I cant take this exam
     if diff < 2:
-        return -upper_limit * 3
+        return -upper_limit * 6
 
     # if an exam only got 2 days then I want to punish it still but at least I can revise one day before it
     if diff == 2:
-        return -upper_limit * 2
+        return -upper_limit * 4
 
     # diff=3 must return >=1.
 
@@ -98,18 +98,35 @@ def get_exam_differences(courses: list) -> (list, list, int):
     A_exams = [(c.moed_a, c) for c in courses]
     B_exams = [(c.moed_b, c) for c in courses]
 
-    none_num = 0
+    malag_num = 0
+    project_num = 0
+    str_project_list = [
+        "project",
+        "Project",
+        "PRVYYQT",
+        "SMYNR",
+        "פרויקט",
+        "נושאים"
+    ]
+
     for (moed_a, c) in A_exams:
         if moed_a is None:
-            none_num += 1
-            # A_exams.remove((moed_a, c))
+            for name in str_project_list:
+                if name in c.name:
+                    project_num += 1
+                    break
+            malag_num += 1
 
     for (moed_b, c) in B_exams:
         if moed_b is None:
-            none_num += 1
-            # B_exams.remove((moed_b, c))
+            for name in str_project_list:
+                if name in c.name:
+                    project_num += 1
+                    break
+            malag_num += 1
 
-    none_num /= 2
+    project_num /= 2
+    malag_num /= 2
 
     A_exams = [(moed_a, c) for (moed_a, c) in A_exams if moed_a is not None]
     B_exams = [(moed_b, c) for (moed_b, c) in B_exams if moed_b is not None]
@@ -133,10 +150,14 @@ def get_exam_differences(courses: list) -> (list, list, int):
         B_differences.append((difference, exam[1]))
         previous_exam_date = exam[0]
 
-    return A_differences, B_differences, none_num
+    # TODO: change the last element of the tuple to two independent elements
+    return A_differences, B_differences, project_num + malag_num
 
 
 def evaluate_exam_period_sum(A_differences: list, B_differences: list, evaluation_strat) -> float:
+    if len(A_differences) + len(B_differences) == 0:
+        return float('-inf')
+
     sum = 0
 
     A_multiplier = 3
@@ -154,14 +175,6 @@ def evaluate_exam_period_average(A_differences: list, B_differences: list, evalu
     if len(A_differences) + len(B_differences) == 0:
         return float('-inf')
 
-    sum = 0
-
-    A_multiplier = 3
-    for difference in A_differences:
-        sum += evaluation_strat(difference[0]) * A_multiplier * difference[1].points / MAX_COURSE_POINTS
-
-    B_multiplier = 1
-    for difference in B_differences:
-        sum += evaluation_strat(difference[0]) * B_multiplier * difference[1].points / MAX_COURSE_POINTS
+    sum = evaluate_exam_period_sum(A_differences, B_differences, evaluation_strat)
 
     return sum / (len(A_differences) + len(B_differences))

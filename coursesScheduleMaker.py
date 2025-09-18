@@ -10,13 +10,20 @@ from select import error
 from Objects.Courses import Course, priority
 from Objects.Heap import MinHeap
 from Objects.Node import Node
-from CoursesList import raw_courses_list
+from CoursesData.CoursesList import raw_courses_list
 
 import os
 
 
 def neighbors(node: Node, all_courses: list) -> list:
     neighbors = []
+
+    for course in node.courses:
+        new_courses = deepcopy(node.courses)
+        new_courses.remove(course)
+        neighbor = Node(new_courses)
+        neighbors.append(neighbor)
+
     if node.total_points >= 23:  # no need to try and get more courses because that is too much
         return neighbors
 
@@ -30,20 +37,12 @@ def neighbors(node: Node, all_courses: list) -> list:
         neighbor = Node(new_courses)
         neighbors.append(neighbor)
 
-    for course in node.courses:
-        new_courses = deepcopy(node.courses)
-        new_courses.remove(course)
-        neighbor = Node(new_courses)
-        neighbors.append(neighbor)
-
     return neighbors
 
 
-def simulated_annealing(start: Node, T, convergence_factor, epsilon=10 ** -9) -> MinHeap:
+def simulated_annealing(start: Node, T, convergence_factor, epsilon=10 ** -11) -> MinHeap:
     curr = start
     curr_val = start.evaluate(priority_multiplier, goal_bonus)
-
-    curr.evaluation = curr_val
 
     # saving the top best number_of_returned_results nodes
     min_heap = MinHeap()
@@ -60,7 +59,6 @@ def simulated_annealing(start: Node, T, convergence_factor, epsilon=10 ** -9) ->
 
         new = pick_pool.pop()
         new_val = new.evaluate(priority_multiplier, goal_bonus)
-        new.evaluation = new_val
         deltaE = new_val - curr_val
 
         if deltaE > 0:
@@ -107,8 +105,8 @@ def get_courses_list(raw_list: list) -> list:
 
 
 if __name__ == '__main__':
-    arg_len = 3
-    if len(sys.argv) < arg_len + 1:
+    arg_len = 4
+    if not len(sys.argv) == arg_len + 1:
         print(
             "instruction format: coursesScheduleMaker.py <number_of_returned_results> <must18plus> <priority_multiplier> <wanted_priority.txt>")
     number_of_returned_results = sys.argv[1]
@@ -121,7 +119,7 @@ if __name__ == '__main__':
     number_of_returned_results = int(number_of_returned_results)
 
     if must18plus == '1' or must18plus == 'true' or must18plus == 'True':
-        goal_bonus = 1000  # goal states dominate
+        goal_bonus = 100  # goal states dominate
     elif must18plus == '0' or must18plus == 'false' or must18plus == 'False':
         goal_bonus = 50  # good bonus for goal states but not extreme — not necessary
     else:
@@ -134,52 +132,54 @@ if __name__ == '__main__':
     if not (os.path.exists(wanted_priority_txt) and wanted_priority_txt.endswith('.txt')):
         raise ValueError("invalid wanted_priority.txt value: it must be a path to a txt file")
 
-    try:
-        with open(wanted_priority_txt, 'r') as f:
+    #   let the errors propagate
+    with open(wanted_priority_txt, 'r') as f:
+        line = f.readline().strip('\n')
+        while line:
+            words = line.split(' ')
+            if not len(words) == 2:
+                raise ValueError(
+                    "invalid wanted_priority.txt format, must be:"
+                    f"{2 * "\n<COURSE ID (8 digits)>: <PRIORITY (1-5)>"}\n...")
+            course_id = words[0]
+            course_priority = words[1]
+            if not course_priority.isdigit():
+                raise ValueError("invalid priority in wanted_priority.txt, it must be a digit from 1-5\n")
+
+            bad_course_id = "invalid course id in wanted_priority.txt, it must be made up of 8 digits\n"
+            if not len(course_id) == 9:
+                raise ValueError(bad_course_id)
+
+            course_id = course_id[0:8]
+            for letter in course_id:
+                if not letter.isdigit():
+                    raise ValueError(bad_course_id)
+
+            # otherwise, everything is valid
+            priority[course_id] = float(course_priority)
+
             line = f.readline().strip('\n')
-            while line:
-                words = line.split(' ')
-                if not len(words) == 2:
-                    raise ValueError(
-                        "invalid wanted_priority.txt format, must be:\n<COURSE ID (8 digits)>: <PRIORITY (1-5)>")
-                course_id = words[0]
-                course_priority = words[1]
-                if not course_priority.isdigit():
-                    raise ValueError("invalid priority in wanted_priority.txt, it must be a digit from 1-5")
-                for letter in course_id:
-                    if not course_priority.isdigit():
-                        raise ValueError("invalid course id in wanted_priority.txt, it must be made up of 8 digits")
-                if not len(course_id) == 9:
-                    raise ValueError("invalid course id in wanted_priority.txt, it must be made up of 8 digits")
-
-                # otherwise, everything is valid
-                priority[course_id[0:8]] = float(course_priority)
-
-                line = f.readline().strip('\n')
-
-    except error:
-        print("an error occurred with the wanted_priority_txt file", sys.stderr)
 
     courses_list = get_courses_list(raw_courses_list)
 
-    wanted_courses = ["02340123"]
+    wanted_courses = ["02340123","02360343"]
     start = Node([c for c in courses_list if c.id in wanted_courses])
 
-    main_result_heap = simulated_annealing(start, T=1000, convergence_factor=0.95)
-    result_heaps = [None, None, None, None, None]
+    main_result_heap = simulated_annealing(start, T=10000, convergence_factor=0.95)
+    result_heaps = [[], [], [], []]
+    result_heaps[0] = simulated_annealing(start, T=1000, convergence_factor=0.95)
     result_heaps[1] = simulated_annealing(start, T=1000, convergence_factor=0.95)
     result_heaps[2] = simulated_annealing(start, T=1000, convergence_factor=0.95)
     result_heaps[3] = simulated_annealing(start, T=1000, convergence_factor=0.95)
-    result_heaps[4] = simulated_annealing(start, T=1000, convergence_factor=0.95)
 
     # merging into main_result_heap
-    for i in range(1, 5):
+    for i in range(0, 4):
         while len(result_heaps[i]) > 0:
-            value = result_heaps[i].get_min()
+            evaluation_node = result_heaps[i].get_min()
             result_heaps[i].pop()
-            if value[0] > main_result_heap.get_min()[0]:
+            if evaluation_node[0] > main_result_heap.get_min()[0]:
                 main_result_heap.pop()
-            main_result_heap.push(value[0], value[1])
+                main_result_heap.push(evaluation_node[0], evaluation_node[1])
 
     result_sorted = []
     while len(main_result_heap) > 0:

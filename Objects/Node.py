@@ -1,6 +1,6 @@
 import math
 from Objects.Courses import evaluate_exam_period_average, get_exam_differences, evaluate_diff_thresholds2, Course, \
-    priority
+    priority_wanted_courses
 
 wanted_points = 16
 
@@ -13,7 +13,7 @@ class Node:
 
         # getting the actual values of has_prioritized,
         #    which represent the existence of the prioritized courses mentioned above.
-        prioritized_courses = priority.keys()
+        prioritized_courses = priority_wanted_courses.keys()
         for course in self.courses:
             if course.id in prioritized_courses:
                 self.has_prioritized[course.id] = 1
@@ -28,7 +28,7 @@ class Node:
 
     def evaluate(self, priority_multiplier: float, goal_bonus: float) -> float:
 
-        project_punishment = -30
+        project_punishment = -70
 
         A_differences, B_differences, project_num = get_exam_differences(self.courses)
         self.exam_differences = A_differences + B_differences
@@ -37,7 +37,7 @@ class Node:
             A_differences, B_differences, evaluate_diff_thresholds2)
         if exam_period_score == float('-inf'): return float('-inf')
 
-        priority_bonus = sum([priority[id] for id, val in self.has_prioritized.items() if val == 1])
+        priority_bonus = sum([priority_wanted_courses[id] for id, val in self.has_prioritized.items() if val == 1])
 
         x = self.total_points
         x_displacement = x - wanted_points

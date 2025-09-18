@@ -2,7 +2,8 @@ import math
 from datetime import datetime
 
 MAX_COURSE_POINTS = 5
-priority = {}
+priority_wanted_courses = {}
+priority_wanted_exams = {}
 
 
 class Course:
@@ -70,18 +71,18 @@ def evaluate_diff_thresholds1(diff: int) -> float:
     return multiplier * (mean ** 2)
 
 
-def evaluate_diff_thresholds2(diff: int) -> float:
+def evaluate_diff_thresholds2(diff: int, punishment_multiplier: float) -> float:
     upper_limit = 5  # the limit that the expression (values) converges to.
 
     # if an exam only got 0-1 days then I want to punish it equally because I cant take this exam
     if diff < 2:
-        return -upper_limit * 6
+        return -upper_limit * punishment_multiplier * 5
 
     # if an exam only got 2 days then I want to punish it still but at least I can revise one day before it
     if diff == 2:
-        return -upper_limit * 4
+        return -upper_limit * punishment_multiplier * 3
 
-    # diff=3 must return >=1.
+        # diff=3 must return >=1.
 
     x = diff  # friendlier representation for functions
     multiplier = 50  # used to exaggerate the values
@@ -136,7 +137,7 @@ def get_exam_differences(courses: list) -> (list, list, int):
 
     A_differences = []
 
-    previous_exam_date = datetime(2026, 2, 1)
+    previous_exam_date = datetime(2026, 1, 31) #actually it is 2 Feb.
     for exam in A_exams:
         if exam[0] is None: continue
         difference = (exam[0] - previous_exam_date).days
@@ -154,6 +155,17 @@ def get_exam_differences(courses: list) -> (list, list, int):
     return A_differences, B_differences, project_num + malag_num
 
 
+def evaluate_single_exam(studying_days: int, course: Course, prev_course_id: str, multiplier: float,
+                         evaluation_strat) -> float:
+    exam_priority = priority_wanted_exams[course.id] if course.id in priority_wanted_exams else 1
+    if studying_days < 3:
+        if prev_course_id in priority_wanted_exams:
+            exam_priority = priority_wanted_exams[prev_course_id] * exam_priority
+
+    return (evaluation_strat(studying_days, multiplier) * course.points *
+            exam_priority / MAX_COURSE_POINTS) * multiplier
+
+
 def evaluate_exam_period_sum(A_differences: list, B_differences: list, evaluation_strat) -> float:
     if len(A_differences) + len(B_differences) == 0:
         return float('-inf')
@@ -161,12 +173,19 @@ def evaluate_exam_period_sum(A_differences: list, B_differences: list, evaluatio
     sum = 0
 
     A_multiplier = 3
+    prev_course_id = ""
     for difference in A_differences:
-        sum += evaluation_strat(difference[0]) * A_multiplier * difference[1].points / MAX_COURSE_POINTS
+        course = difference[1]
+        studying_days = difference[0]
+        sum += evaluate_single_exam(studying_days, course, prev_course_id, A_multiplier, evaluation_strat)
+        prev_course_id = course.id
 
     B_multiplier = 1
     for difference in B_differences:
-        sum += evaluation_strat(difference[0]) * B_multiplier * difference[1].points / MAX_COURSE_POINTS
+        course = difference[1]
+        studying_days = difference[0]
+        sum += evaluate_single_exam(studying_days, course, prev_course_id, B_multiplier, evaluation_strat)
+        prev_course_id = course.id
 
     return sum
 

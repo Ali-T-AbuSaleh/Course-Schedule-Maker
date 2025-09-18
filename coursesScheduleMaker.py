@@ -7,7 +7,7 @@ from random import shuffle
 
 from select import error
 
-from Objects.Courses import Course, priority
+from Objects.Courses import Course, priority_wanted_courses, priority_wanted_exams
 from Objects.Heap import MinHeap
 from Objects.Node import Node
 from CoursesData.CoursesList import raw_courses_list
@@ -103,16 +103,44 @@ def get_courses_list(raw_list: list) -> list:
 
     return result_list
 
+def get_priorities_from_file_to_dict(file_path: str, priority_dict: dict, field_name:str) -> None:
+    with open(file_path, 'r') as f:
+        line = f.readline().strip('\n')
+        while line:
+            words = line.split(' ')
+            if not len(words) == 2:
+                raise ValueError(
+                    f"invalid {field_name} format, must be:"
+                    f"{2 * "\n<COURSE ID (8 digits)>: <PRIORITY (1-5)>"}\n...")
+            course_id = words[0]
+            course_priority = words[1]
+            if not course_priority.isdigit():
+                raise ValueError(f"invalid priority in {field_name}, it must be a digit from 1-5\n")
+
+            bad_course_id = f"invalid course id in {field_name}, it must be made up of 8 digits\n"
+            if not len(course_id) == 9:
+                raise ValueError(bad_course_id)
+
+            course_id = course_id[0:8]
+            for letter in course_id:
+                if not letter.isdigit():
+                    raise ValueError(bad_course_id)
+
+            # otherwise, everything is valid
+            priority_dict[course_id] = float(course_priority)
+
+            line = f.readline().strip('\n')
 
 if __name__ == '__main__':
-    arg_len = 4
+    arg_len = 5
     if not len(sys.argv) == arg_len + 1:
         print(
-            "instruction format: coursesScheduleMaker.py <number_of_returned_results> <must18plus> <priority_multiplier> <wanted_priority.txt>")
+            "instruction format: coursesScheduleMaker.py <number_of_returned_results> <must18plus> <priority_multiplier> <wanted_courses_priority.txt> <wanted_exam_priority.txt>")
     number_of_returned_results = sys.argv[1]
     must18plus = sys.argv[2]
     priority_multiplier = sys.argv[3]
-    wanted_priority_txt = sys.argv[4]
+    wanted_courses_priority_txt = sys.argv[4]
+    wanted_exam_priority_txt = sys.argv[5]
 
     if not number_of_returned_results.isnumeric():
         raise ValueError("number of returned results must be an integer")
@@ -129,36 +157,16 @@ if __name__ == '__main__':
         raise ValueError("invalid priority_multiplier value: it must be a number")
     priority_multiplier = float(priority_multiplier)
 
-    if not (os.path.exists(wanted_priority_txt) and wanted_priority_txt.endswith('.txt')):
-        raise ValueError("invalid wanted_priority.txt value: it must be a path to a txt file")
+    if not (os.path.exists(wanted_courses_priority_txt) and wanted_courses_priority_txt.endswith('.txt')):
+        raise ValueError("invalid wanted_courses_priority.txt value: it must be a path to a txt file")
+    
+    if not (os.path.exists(wanted_exam_priority_txt) and wanted_exam_priority_txt.endswith('.txt')):
+        raise ValueError("invalid wanted_exam_priority.txt value: it must be a path to a txt file")
+    
 
     #   let the errors propagate
-    with open(wanted_priority_txt, 'r') as f:
-        line = f.readline().strip('\n')
-        while line:
-            words = line.split(' ')
-            if not len(words) == 2:
-                raise ValueError(
-                    "invalid wanted_priority.txt format, must be:"
-                    f"{2 * "\n<COURSE ID (8 digits)>: <PRIORITY (1-5)>"}\n...")
-            course_id = words[0]
-            course_priority = words[1]
-            if not course_priority.isdigit():
-                raise ValueError("invalid priority in wanted_priority.txt, it must be a digit from 1-5\n")
-
-            bad_course_id = "invalid course id in wanted_priority.txt, it must be made up of 8 digits\n"
-            if not len(course_id) == 9:
-                raise ValueError(bad_course_id)
-
-            course_id = course_id[0:8]
-            for letter in course_id:
-                if not letter.isdigit():
-                    raise ValueError(bad_course_id)
-
-            # otherwise, everything is valid
-            priority[course_id] = float(course_priority)
-
-            line = f.readline().strip('\n')
+    get_priorities_from_file_to_dict(wanted_courses_priority_txt, priority_wanted_courses, field_name="wanted_courses_priority.txt")
+    get_priorities_from_file_to_dict(wanted_exam_priority_txt, priority_wanted_exams, field_name="wanted_exam_priority.txt")
 
     courses_list = get_courses_list(raw_courses_list)
 

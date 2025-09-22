@@ -1,106 +1,8 @@
+from selenium.webdriver.remote.webelement import WebElement
+from typing_extensions import Final
+
+from Course_Information_Containers.Containers_Processing import get_container_string_from_text, COURSE_ID_LENGTH
 from CoursesData import Course_IDs_getter
-
-
-def get_container_string_from_text(text: str, container_opening: str):
-    container_closing = "</" + container_opening + ">"
-    container_opening = "<" + container_opening
-    num_opened = 1
-    num_closed = 0
-
-    added_idx = 0
-
-    next_closing_idx = -1
-    next_opening_idx = text.find(container_opening)
-    text = text[next_opening_idx:]
-    text_copy = text[len(container_opening):]
-    added_idx += next_opening_idx + len(container_opening)
-    next_opening_idx = -1
-
-    while text_copy != "":
-        assert num_opened > num_closed
-        if next_closing_idx < 0:
-            next_closing_idx = text_copy.find(container_closing)
-            num_closed += 1
-        if next_opening_idx < 0:
-            next_opening_idx = text_copy.find(container_opening)
-
-        if next_closing_idx == -1:
-            num_closed -= 1
-            raise ValueError("\nText doesnt have a closing for the container!\n\n")
-        final_closing_idx = next_closing_idx
-
-        if next_opening_idx == -1:  # then we did not find another opening
-
-            trim_start_idx = next_closing_idx + len(container_closing)
-            next_closing_idx = -1
-
-        else:
-            if next_closing_idx < next_opening_idx:
-                trim_start_idx = next_closing_idx + len(container_closing)
-                next_closing_idx = -1
-                next_opening_idx -= trim_start_idx
-            else:
-                num_opened += 1
-                trim_start_idx = next_opening_idx + len(container_opening)
-                next_opening_idx = -1
-                next_closing_idx -= trim_start_idx
-
-        if num_closed == num_opened:
-            return text[0:final_closing_idx + len(container_closing) + added_idx]
-
-        assert trim_start_idx > 0 or trim_start_idx < len(text_copy), "\nsomething went wrong with trimming\n\n"
-
-        text_copy = text_copy[trim_start_idx:]
-        added_idx += trim_start_idx
-
-    raise ValueError("\nText doesnt have a closing for the container!\n\n")
-
-
-# def test_func(func, inputs: tuple, true_result, test_number):
-#     result = func(*inputs)
-#     if result != true_result:
-#         print(f"test {test_number} failed")
-#         result = fold_string(result, 150)
-#         print(result + '\n')
-#     else:
-#         print(f"test {test_number} passed")
-#
-#
-# def fold_string(string, max_length) -> str:
-#     if len(string) <= max_length:
-#         return string
-#     trim = str(string[:max_length])
-#     trim = trim[::-1]
-#     trim = trim[trim.find(' ') + 1:]
-#     trim = trim[::-1]
-#
-#     remaining = string[len(trim) + 1:]
-#
-#     return trim + '\n' + fold_string(remaining, max_length)
-#
-#
-# if __name__ == "__main__":
-#     true_container1 = container1 = '<span class="exam-info-left-arrow"></span>'
-#     true_container2 = (
-#         '<span class="exam-info-item exam-info-item-course-02360343" style="background-color: rgb(45, 134, 94);">'
-#         '<span class="content-absolute">03/02</span><span class="content-bold-hidden">03/02</span></span>')
-#     container2 = true_container2 + 'fcuk safjsdknvclamkd vclkjwadf'
-#     true_container4 = "<span>1<span>2<span>3</span></span></span>"
-#     container4 = true_container4 + "AAAAAAAAAAAAAAAAA"
-#     true_container5 = "<span>1<span>2<span>3</span><span>4</span></span></span>"
-#     container5 = true_container5 + "AAAAAAAAAAAAAAAAA"
-#     true_container3 = true_container1
-#     container3 = container1 + container2
-#
-#     test_func(get_container_string_from_text, (container1, 'span'), true_container1, test_number=1)
-#
-#     test_func(get_container_string_from_text, (container2, 'span'), true_container2, test_number=2)
-#
-#     test_func(get_container_string_from_text, (container3, 'span'), true_container3, test_number=3)
-#
-#     test_func(get_container_string_from_text, (container4, 'span'), true_container4, test_number=4)
-#
-#     test_func(get_container_string_from_text, (container5, 'span'), true_container5, test_number=5)
 
 import time
 import random
@@ -122,7 +24,9 @@ from winsound import Beep
 # ---------------------------
 # User config
 # ---------------------------
-CHEESEFORK_URL = "https://cheesefork.cf/?semester=202501"
+YEAR = 2026
+SEMESTER = 1
+CHEESEFORK_URL = f"https://cheesefork.cf/?semester={YEAR - 1}0{SEMESTER}"
 WORKDIR = Path("../Course_Information_Containers")
 WORKDIR.mkdir(exist_ok=True)
 
@@ -241,7 +145,7 @@ def wait_for_search_results(driver, course_id):
         time.sleep(1.0)
 
 
-def wait_for_course_info_results(driver, By, key_word, wanted_elem):
+def wait_for_course_info_results(driver, By, key_word):
     """
     Wait for an element in the results that likely indicates that the search finished.
     Strategy: wait for either a results container or for URL to change / for presence of course id text.
@@ -249,10 +153,9 @@ def wait_for_course_info_results(driver, By, key_word, wanted_elem):
     try:
         # Wait for some results container to appear OR an element with the course id text.
         WebDriverWait(driver, MAX_WAIT).until(
-            lambda d: (d.find_elements(By, key_word)[-1]
-                       == wanted_elem)
+            lambda d: (d.find_element(By, key_word))
         )
-        time.sleep(0.2)
+        time.sleep(0.1)
     except TimeoutException:
         # fallback: just sleep a little longer and proceed
         time.sleep(1.0)
@@ -323,18 +226,33 @@ def main():
                 wanted_button = i_buttons[-1]
                 wanted_button.click()
 
+                key_word_info = "bootstrap-dialog-message"
+
                 # Wait for results to load
-                wait_for_course_info_results(driver, By.CLASS_NAME, "course-button-list-badge-text", wanted_button)
+                wait_for_course_info_results(driver, By.CLASS_NAME, key_word_info)
 
                 # Saving course information container string in a file
-                key_word = "bootstrap-dialog-message"
                 html_text = driver.page_source
 
-                trim_until_course_info = html_text[html_text.find(key_word):]
-                course_info_container = get_container_string_from_text(trim_until_course_info, "div")
+                trim_until_course_info = html_text[html_text.find(key_word_info):]
+                course_info_container = get_container_string_from_text(trim_until_course_info, "<div", "</div>")
+
+                trim_until_course_feedback_summary = trim_until_course_info[len(course_info_container) + 1:]
+                feedback_idx = trim_until_course_feedback_summary.find("course-feedback-summary")
+                course_feedback_container = ""
+
+                # deals with the case where there is no feedback for the course.
+                if feedback_idx != -1:
+                    trim_until_course_feedback_summary = trim_until_course_feedback_summary[feedback_idx:]
+                    try:
+                        course_feedback_container = get_container_string_from_text(trim_until_course_feedback_summary,
+                                                                                   "<div", "</div>")
+                    finally:
+                        if course_feedback_container.find("row course-ranks") == -1:
+                            course_feedback_container = ""
 
                 if prev_course_info_container != course_info_container:
-                    courses_containers.append(course_info_container)
+                    courses_containers.append((course_info_container, course_feedback_container))
                     print(f"  -> saved container of: {cid}")
                     prev_course_info_container = course_info_container
                 else:
@@ -360,16 +278,86 @@ def main():
                 driver.get(CHEESEFORK_URL)
                 time.sleep(0.6)
                 close_cookie_banner_if_present(driver)
+
     finally:
+
+        #—————————storing data into file as ready-to-use python variables—————————————
+
         safe_name = f"Courses_Containers.py"
         file_path = WORKDIR / safe_name
         with open(file_path, "w", encoding="utf-8") as f:
-            f.write("courses_containers = [")
-            list_content = ""
-            for container in courses_containers:
-                list_content += f"\n        '{container.replace("'", '`')}',"
-            f.write(list_content[0:-1] + "]")
-        # Courses_Containers.courses_containers.append(courses_containers)
+            def write_course_containers_into_file():
+                f.write("courses_containers = [")
+                list_content = ""
+                for info_container, feedback_container in courses_containers:
+                    list_content += f"\n        ("
+                    list_content += f"\n        '{info_container.replace("'", '`').replace("\n", "\\n")}',"
+                    list_content += f"\n        '{feedback_container.replace("'", '`').replace("\n", "\\n")}'"
+                    list_content += f"\n        ),"
+                f.write(list_content[0:-1] + "]")
+
+            def write_course_exam_dates_into_file():
+                def get_course_exam_dates() -> dict:
+                    exam_info_container = driver.find_element(By.ID, "course-exam-info")
+                    exam_A_and_B_info_containers = exam_info_container.find_elements(By.CLASS_NAME, "exam-info-content")
+                    exam_A_info_container, exam_B_info_container = exam_A_and_B_info_containers[0].find_element(
+                        By.TAG_NAME,
+                        "span"), \
+                        exam_A_and_B_info_containers[1].find_element(By.TAG_NAME, "span")
+
+                    def get_moed_course_elements(moed_info_container: WebElement) -> list[WebElement]:
+                        moed_elements = moed_info_container.find_elements(By.TAG_NAME, "span")
+                        moed_course_elements = [element for element in moed_elements if
+                                                "exam-info-item exam-info-item-course" in element.get_dom_attribute(
+                                                    "class")]
+                        return moed_course_elements
+
+                    displacement_for_course_id = len("exam-info-item exam-info-item-course-")
+
+                    def get_course_exam_from_span_element(element: WebElement) -> (str, str):
+                        course_id = element.get_dom_attribute("class")[
+                                    displacement_for_course_id:displacement_for_course_id + COURSE_ID_LENGTH]
+
+                        # if this element is not the first one, the date is in the following property:
+                        exam_day_month = element.get_attribute("data-original-title")
+
+                        # if this element is the first one, then it contains the date in text
+                        if exam_day_month is None:
+                            exam_day_month = element.find_element(By.CLASS_NAME, "content-absolute").text
+
+                        exam_date_ISO = f"{YEAR}-" + "-".join(exam_day_month.split("/")[::-1])
+                        return course_id, exam_date_ISO
+
+                    moed_A_course_elements = get_moed_course_elements(exam_A_info_container)
+                    moed_B_course_elements = get_moed_course_elements(exam_B_info_container)
+                    course_exams_dict: dict[str:list[str, str]] = {}
+                    for element in moed_A_course_elements:
+                        course_id, exam_date_ISO = get_course_exam_from_span_element(element)
+                        course_exams_dict[course_id] = ["", ""]
+                        course_exams_dict[course_id][0] = exam_date_ISO
+
+                    for element in moed_B_course_elements:
+                        course_id, exam_date_ISO = get_course_exam_from_span_element(element)
+
+                        # some courses may have only one exam (eg: project deadline) which may be signed as Moed B for convenience
+                        if course_id not in course_exams_dict:
+                            course_exams_dict[course_id] = [None, ""]
+
+                        course_exams_dict[course_id][1] = exam_date_ISO
+                    return course_exams_dict
+
+                course_exams_dict = get_course_exam_dates()
+                f.write("course_exams_dict = {")
+                dict_content = ""
+                for course_id, exams in course_exams_dict.items():
+                    dict_content += f"\n        '{course_id}': ['{exams[0]}','{exams[1]}'],"
+                f.write(dict_content[0:-1] + "}")
+
+            write_course_exam_dates_into_file()
+            f.write("\n\n")
+            write_course_containers_into_file()
+
+        #—————————————————printing finish message and making sound——————————————————————
         print(f"  -> saved courses containers at: {file_path}!")
         for i in range(1, 2):
             Beep(500, 400)

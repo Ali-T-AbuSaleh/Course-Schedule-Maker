@@ -145,7 +145,7 @@ def wait_for_search_results(driver, course_id):
         time.sleep(1.0)
 
 
-def wait_for_course_info_results(driver, By, key_word):
+def wait_for_course_results(driver, By, key_word):
     """
     Wait for an element in the results that likely indicates that the search finished.
     Strategy: wait for either a results container or for URL to change / for presence of course id text.
@@ -170,6 +170,7 @@ def main():
 
     # Resulting Data Storage variable
     courses_containers = []
+    courses_grades = {}
 
     chrome_opts = Options()
     if HEADLESS:
@@ -226,34 +227,83 @@ def main():
                 wanted_button = i_buttons[-1]
                 wanted_button.click()
 
-                key_word_info = "bootstrap-dialog-message"
+                # —————————————getting course information data——————————————————
+
+                key_word_info = "course-information"
 
                 # Wait for results to load
-                wait_for_course_info_results(driver, By.CLASS_NAME, key_word_info)
+                wait_for_course_results(driver, By.CLASS_NAME, key_word_info)
 
                 # Saving course information container string in a file
-                html_text = driver.page_source
+                course_info_element = driver.find_element(By.CLASS_NAME, key_word_info)
+                course_info_container = course_info_element.get_attribute("outerHTML")
 
-                trim_until_course_info = html_text[html_text.find(key_word_info):]
-                course_info_container = get_container_string_from_text(trim_until_course_info, "<div", "</div>")
+                # —————————————————getting feedback data——————————————————————
+                key_word_feedback = "course-feedback-summary"
 
-                trim_until_course_feedback_summary = trim_until_course_info[len(course_info_container) + 1:]
-                feedback_idx = trim_until_course_feedback_summary.find("course-feedback-summary")
+                wait_for_course_results(driver, By.ID, key_word_feedback)
+
                 course_feedback_container = ""
 
+                try:
+                    course_feedback_summary_element = driver.find_element(By.ID, key_word_feedback)
+                except Exception:
+                    course_feedback_summary_element = None
+                assert course_feedback_summary_element is not None, "course_feedback_summary_element is none"
+
+                try:
+                    course_feedback_container_element = course_feedback_summary_element.find_element(By.TAG_NAME,
+                                                                                                     "div")
+                except Exception:
+                    course_feedback_container_element = None
+
                 # deals with the case where there is no feedback for the course.
-                if feedback_idx != -1:
-                    trim_until_course_feedback_summary = trim_until_course_feedback_summary[feedback_idx:]
-                    try:
-                        course_feedback_container = get_container_string_from_text(trim_until_course_feedback_summary,
-                                                                                   "<div", "</div>")
-                    finally:
-                        if course_feedback_container.find("row course-ranks") == -1:
-                            course_feedback_container = ""
+                if course_feedback_container_element is not None:
+                    course_feedback_container = course_feedback_container_element.get_attribute("outerHTML")
+
+                # ————————————getting histograms data (course averages)—————————————————
+
+                key_word_histogram = "histogram-content"
+
+                wait_for_course_results(driver, By.ID, key_word_histogram)
+
+                try:
+                    course_histograms_wrapper_element = driver.find_element(By.CLASS_NAME, key_word_histogram)
+                except Exception:
+                    course_histograms_wrapper_element = None
+
+                course_average = None
+                if course_histograms_wrapper_element is not None:
+                    histograms_element = course_histograms_wrapper_element.find_element(By.TAG_NAME, "select")
+                    YEARS_TO_TAKE_INTO_ACCOUNT = 7
+                    histogram_per_year_elements = histograms_element.find_elements(By.TAG_NAME, "option")
+
+                    def take_average_from_histograms_options(histogram_options: list[WebElement]):
+                        sum = 0
+                        count = 0
+                        key_word_FINAL = "סופי "
+                        i = 0
+                        for option in histogram_options:
+                            if i >= YEARS_TO_TAKE_INTO_ACCOUNT:
+                                break
+                            text = option.text
+
+                            idx_grade = text.find(key_word_FINAL)
+                            if idx_grade == -1:
+                                continue
+                            i += 1
+                            idx_grade += len(key_word_FINAL)
+                            grade = int(text[idx_grade:idx_grade + 2])
+                            count += 1
+                            sum += grade
+                        return sum / count
+
+                    course_average = take_average_from_histograms_options(histogram_per_year_elements)
 
                 if prev_course_info_container != course_info_container:
                     courses_containers.append((course_info_container, course_feedback_container))
-                    print(f"  -> saved container of: {cid}")
+                    courses_grades[cid] = course_average
+                    print(f"  -> saved container and average of: {cid}")
                     prev_course_info_container = course_info_container
                 else:
                     print(f"  -> {cid} is not passed this semester")
@@ -266,7 +316,6 @@ def main():
                 driver.get(CHEESEFORK_URL)
                 time.sleep(0.6)
                 close_cookie_banner_if_present(driver)
-
             except Exception as ex:
                 print(f"Error while processing {cid}: {ex}")
                 # Optional: save error page for debugging
@@ -281,7 +330,7 @@ def main():
 
     finally:
 
-        #—————————storing data into file as ready-to-use python variables—————————————
+        # —————————storing data into file as ready-to-use python variables—————————————
 
         safe_name = f"Courses_Containers.py"
         file_path = WORKDIR / safe_name
@@ -333,7 +382,7 @@ def main():
                     course_exams_dict: dict[str:list[str, str]] = {}
                     for element in moed_A_course_elements:
                         course_id, exam_date_ISO = get_course_exam_from_span_element(element)
-                        course_exams_dict[course_id] = ["", ""]
+                        course_exams_dict[course_id] = [None, None]
                         course_exams_dict[course_id][0] = exam_date_ISO
 
                     for element in moed_B_course_elements:
@@ -353,11 +402,20 @@ def main():
                     dict_content += f"\n        '{course_id}': ['{exams[0]}','{exams[1]}'],"
                 f.write(dict_content[0:-1] + "}")
 
+            def write_courses_grades_into_file():
+                f.write("courses_grades = {")
+                dict_content = ""
+                for course_id, grade in courses_grades.items():
+                    dict_content += f"\n        '{course_id}': {grade},"
+                f.write(dict_content[0:-1] + "}")
+
+            write_courses_grades_into_file()
+            f.write("\n\n")
             write_course_exam_dates_into_file()
             f.write("\n\n")
             write_course_containers_into_file()
 
-        #—————————————————printing finish message and making sound——————————————————————
+        # —————————————————printing finish message and making sound——————————————————————
         print(f"  -> saved courses containers at: {file_path}!")
         for i in range(1, 2):
             Beep(500, 400)

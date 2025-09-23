@@ -1,0 +1,2031 @@
+{
+    "01040031": {
+        "name": "חשבון אינפיניטסימלי 1מ`",
+        "id": "01040031",
+        "points": 5.5,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [
+            "01040003",
+            "01040010",
+            "01040012",
+            "01040017",
+            "01040018",
+            "01040036",
+            "01040041",
+            "01040042",
+            "01040087",
+            "01040090",
+            "01040093",
+            "01040195"
+        ],
+        "weight": 4.5,
+        "rating": 4,
+        "course_average": 67.48275862068965,
+        "moed_a": "2026-02-09",
+        "moed_b": "2026-03-10"
+    },
+    "01040166": {
+        "name": "אלגברה אמ`",
+        "id": "01040166",
+        "points": 5.5,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [
+            "01040005",
+            "01040006",
+            "01040009",
+            "01040016",
+            "01040019",
+            "01040063",
+            "01040064",
+            "01040065",
+            "01040087",
+            "01040066",
+            "01040167"
+        ],
+        "weight": 4,
+        "rating": 4,
+        "course_average": 68.6,
+        "moed_a": "2026-02-13",
+        "moed_b": "2026-03-13"
+    },
+    "02340114": {
+        "name": "מבוא למדעי המחשב מ`",
+        "id": "02340114",
+        "points": 4.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [
+            "00940704",
+            "02340108",
+            "01040814",
+            "02340102",
+            "02340104",
+            "02340106",
+            "02340109",
+            "02340111",
+            "02340112",
+            "02340117",
+            "02340126",
+            "02340127",
+            "02340128",
+            "02340130",
+            "02340221"
+        ],
+        "weight": 3,
+        "rating": 3,
+        "course_average": 78.4,
+        "moed_a": "2026-02-23",
+        "moed_b": "2026-03-22"
+    },
+    "02340129": {
+        "name": "מב.לתורת הקבוצות ואוטומטים למדמ\"ח",
+        "id": "02340129",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [
+            "00440114",
+            "00940344",
+            "00940345",
+            "00940346",
+            "01040002",
+            "01040290",
+            "02340144",
+            "02360353"
+        ],
+        "weight": 2.5,
+        "rating": 4,
+        "course_average": 76.71428571428571,
+        "moed_a": "2026-02-18",
+        "moed_b": "2026-03-17"
+    },
+    "03240033": {
+        "name": "אנגלית טכנית-מתקדמים ב`",
+        "id": "03240033",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [
+            "03240012"
+        ],
+        "weight": 2.5,
+        "rating": 4,
+        "course_average": 84.53333333333333,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "01040032": {
+        "name": "חשבון אינפיניטסימלי 2מ`",
+        "id": "01040032",
+        "points": 5.0,
+        "prerequisites_logical_expression": "(courses_taken['01040195'] | courses_taken['01040031'])",
+        "equivalents": [
+            "01040004",
+            "01040011",
+            "01040013",
+            "01040014",
+            "01040020",
+            "01040022",
+            "01040035",
+            "01040043",
+            "01040044",
+            "01040091",
+            "01040092",
+            "01040093",
+            "01040094",
+            "01040281"
+        ],
+        "weight": 4.5,
+        "rating": 4,
+        "course_average": 68.1,
+        "moed_a": "2026-02-02",
+        "moed_b": "2026-03-17"
+    },
+    "01140071": {
+        "name": "פיסיקה 1מ",
+        "id": "01140071",
+        "points": 3.5,
+        "prerequisites_logical_expression": "(courses_taken['01130013'])",
+        "equivalents": [
+            "01140001",
+            "01140003",
+            "01140051",
+            "01140077",
+            "01140014",
+            "01140064",
+            "01140074",
+            "01140248",
+            "01150248"
+        ],
+        "weight": 3.5,
+        "rating": 4,
+        "course_average": 74.26666666666667,
+        "moed_a": "2026-02-04",
+        "moed_b": "2026-03-05"
+    },
+    "02340124": {
+        "name": "מבוא לתכנות מערכות",
+        "id": "02340124",
+        "points": 4.0,
+        "prerequisites_logical_expression": "(courses_taken['02340114'] | courses_taken['02340117'])",
+        "equivalents": [
+            "00440101",
+            "00940219",
+            "01040824",
+            "02340121",
+            "02340122"
+        ],
+        "weight": 4.5,
+        "rating": 4,
+        "course_average": 75.5,
+        "moed_a": "2026-02-17",
+        "moed_b": "2026-03-24"
+    },
+    "02340125": {
+        "name": "אלגוריתמים נומריים",
+        "id": "02340125",
+        "points": 3.0,
+        "prerequisites_logical_expression": "((courses_taken['02340114'] & courses_taken['01040166']) | (courses_taken['02340114'] & courses_taken['01040016']) | (courses_taken['02340114'] & courses_taken['01040064']) | (courses_taken['01040016'] & courses_taken['02340117']) | (courses_taken['02340117'] & courses_taken['01040064']) | (courses_taken['02340117'] & courses_taken['01040166']))",
+        "equivalents": [
+            "00340033",
+            "00340056",
+            "00840135",
+            "00950295",
+            "00950296",
+            "01040038",
+            "01040283",
+            "01040294",
+            "02340107",
+            "02380125"
+        ],
+        "weight": 3,
+        "rating": 4,
+        "course_average": 77.1875,
+        "moed_a": "2026-02-22",
+        "moed_b": "2026-03-19"
+    },
+    "02340141": {
+        "name": "קומבינטוריקה למדעי המחשב",
+        "id": "02340141",
+        "points": 3.0,
+        "prerequisites_logical_expression": "((courses_taken['01040166'] & courses_taken['01040195']) | (courses_taken['01040166'] & courses_taken['01040031']) | (courses_taken['01040031'] & courses_taken['01040016']) | (courses_taken['01040016'] & courses_taken['01040195']) | (courses_taken['01040166'] & courses_taken['01040012']) | (courses_taken['01040016'] & courses_taken['01040195']) | (courses_taken['01040016'] & courses_taken['01040031']) | (courses_taken['01040016'] | courses_taken['01040012']) | (courses_taken['01040064'] & courses_taken['01040195']) | (courses_taken['01040064'] & courses_taken['01040031']))",
+        "equivalents": [
+            "00440114",
+            "00940344",
+            "00940345",
+            "00940346",
+            "00940347",
+            "01040286",
+            "02340144",
+            "02340246"
+        ],
+        "weight": 3,
+        "rating": 4,
+        "course_average": 71.13793103448276,
+        "moed_a": "2026-02-13",
+        "moed_b": "2026-03-12"
+    },
+    "00940412": {
+        "name": "הסתברות מ",
+        "id": "00940412",
+        "points": 4.0,
+        "prerequisites_logical_expression": "(courses_taken['01040031'] | courses_taken['01040017'] | courses_taken['01040018'] | courses_taken['01040195'] | courses_taken['01040042'])",
+        "equivalents": [
+            "00940480",
+            "00940481",
+            "00940411",
+            "00940417",
+            "00940491",
+            "00940492",
+            "01040034",
+            "01040222"
+        ],
+        "weight": 4,
+        "rating": 3,
+        "course_average": 73.47619047619048,
+        "moed_a": "2026-03-01",
+        "moed_b": "2026-03-25"
+    },
+    "01040134": {
+        "name": "אלגברה מודרנית ח",
+        "id": "01040134",
+        "points": 2.5,
+        "prerequisites_logical_expression": "(courses_taken['01040016'] | courses_taken['01040166'] | courses_taken['01040066'] | courses_taken['01040065'] | courses_taken['01040064'])",
+        "equivalents": [
+            "01040158",
+            "01040172",
+            "01040279"
+        ],
+        "weight": 2,
+        "rating": 4,
+        "course_average": 75.37931034482759,
+        "moed_a": "2026-02-24",
+        "moed_b": "2026-03-19"
+    },
+    "02340218": {
+        "name": "מבני נתונים 1",
+        "id": "02340218",
+        "points": 3.0,
+        "prerequisites_logical_expression": "((courses_taken['02340141'] & courses_taken['02340124']) | (courses_taken['02340124'] & courses_taken['01040286']) | (courses_taken['01040286'] & courses_taken['02340122']) | (courses_taken['02340122'] & courses_taken['02340141']))",
+        "equivalents": [
+            "00350015",
+            "00440268",
+            "00940223",
+            "00940224",
+            "01040918",
+            "02340268"
+        ],
+        "weight": 4.5,
+        "rating": 4,
+        "course_average": 74.75,
+        "moed_a": "2026-02-08",
+        "moed_b": "2026-03-15"
+    },
+    "00440252": {
+        "name": "מערכות ספרתיות ומבנה המחשב",
+        "id": "00440252",
+        "points": 5.0,
+        "prerequisites_logical_expression": "(courses_taken['02340117'] | courses_taken['02340114'])",
+        "equivalents": [
+            "00440145",
+            "00440262",
+            "01040952",
+            "02340145",
+            "02340252",
+            "02340262"
+        ],
+        "weight": 3.5,
+        "rating": 4,
+        "course_average": 79.63157894736842,
+        "moed_a": "2026-02-12",
+        "moed_b": "2026-03-12"
+    },
+    "02340292": {
+        "name": "לוגיקה למדעי המחשב",
+        "id": "02340292",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02340129'] | (courses_taken['01040293'] & courses_taken['01040002']) | courses_taken['01040290'])",
+        "equivalents": [
+            "00440114",
+            "00940345",
+            "00940346",
+            "01060156",
+            "02340293"
+        ],
+        "weight": 2.5,
+        "rating": 4,
+        "course_average": 73.0,
+        "moed_a": "2026-02-02",
+        "moed_b": "2026-03-23"
+    },
+    "02340118": {
+        "name": "ארגון ותכנות המחשב",
+        "id": "02340118",
+        "points": 3.0,
+        "prerequisites_logical_expression": "((courses_taken['02340124'] & courses_taken['00440252']) | (courses_taken['02340252'] & courses_taken['02340124']))",
+        "equivalents": [
+            "00440264",
+            "01040818"
+        ],
+        "weight": 3.5,
+        "rating": 4,
+        "course_average": 76.73913043478261,
+        "moed_a": "2026-02-26",
+        "moed_b": "2026-03-23"
+    },
+    "02340123": {
+        "name": "מערכות הפעלה",
+        "id": "02340123",
+        "points": 4.5,
+        "prerequisites_logical_expression": "(courses_taken['02340218'])",
+        "equivalents": [
+            "00460209",
+            "00460210",
+            "01040823",
+            "02340119",
+            "02340120",
+            "02360364"
+        ],
+        "weight": 4.5,
+        "rating": 3,
+        "course_average": 76.8,
+        "moed_a": "2026-02-18",
+        "moed_b": "2026-03-17"
+    },
+    "02340247": {
+        "name": "אלגוריתמים 1",
+        "id": "02340247",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02340218'] & courses_taken['02340141'])",
+        "equivalents": [
+            "00940226",
+            "02140910",
+            "00440268",
+            "00460002",
+            "00940223",
+            "00940224",
+            "01040287",
+            "01040291",
+            "02340246"
+        ],
+        "weight": 2.5,
+        "rating": 4,
+        "course_average": 72.13636363636364,
+        "moed_a": "2026-02-08",
+        "moed_b": "2026-03-09"
+    },
+    "01040033": {
+        "name": "אנליזה וקטורית",
+        "id": "01040033",
+        "points": 2.5,
+        "prerequisites_logical_expression": "((courses_taken['01040016'] & courses_taken['01040281']) | (courses_taken['01040281'] & courses_taken['01040166']) | (courses_taken['01040016'] & courses_taken['01040032']) | (courses_taken['01040032'] & courses_taken['01040166']) | (courses_taken['01040064'] & courses_taken['01040281']) | (courses_taken['01040065'] & courses_taken['01040281']) | (courses_taken['01040064'] & courses_taken['01040032']) | (courses_taken['01040065'] & courses_taken['01040032']))",
+        "equivalents": [
+            "01040001",
+            "01040013",
+            "01040014",
+            "01040282",
+            "01040000",
+            "01040004",
+            "01040022",
+            "01040043",
+            "01040044",
+            "01040295"
+        ],
+        "weight": 2.5,
+        "rating": 4,
+        "course_average": 70.33333333333333,
+        "moed_a": "2026-02-11",
+        "moed_b": "2026-03-12"
+    },
+    "01040174": {
+        "name": "אלגברה במ`",
+        "id": "01040174",
+        "points": 3.5,
+        "prerequisites_logical_expression": "(courses_taken['01040066'] | courses_taken['01040166'])",
+        "equivalents": [
+            "01040171",
+            "01040168",
+            "01040038",
+            "01040173"
+        ],
+        "weight": 3,
+        "rating": 4,
+        "course_average": 70.38888888888889,
+        "moed_a": "2026-02-03",
+        "moed_b": "2026-03-22"
+    },
+    "01040122": {
+        "name": "תורת הפונקציות 1",
+        "id": "01040122",
+        "points": 3.5,
+        "prerequisites_logical_expression": "(courses_taken['01040013'] | courses_taken['01040281'] | courses_taken['01040044'] | courses_taken['01040022'] | courses_taken['01040043'] | courses_taken['01040032'])",
+        "equivalents": [
+            "01040215",
+            "01040221"
+        ],
+        "weight": 3,
+        "rating": 4,
+        "course_average": 76.88235294117646,
+        "moed_a": "2026-02-09",
+        "moed_b": "2026-03-09"
+    },
+    "01040142": {
+        "name": "מבוא למרחבים מטריים וטופולוגיים",
+        "id": "01040142",
+        "points": 3.5,
+        "prerequisites_logical_expression": "((courses_taken['01040195'] & courses_taken['01040290']) | (courses_taken['01040290'] & courses_taken['01040031']) | (courses_taken['01040002'] & courses_taken['01040195']) | (courses_taken['01040002'] & courses_taken['01040031']) | (courses_taken['01040293'] & courses_taken['01040195']) | (courses_taken['01040293'] & courses_taken['01040031']) | (courses_taken['02340129'] & courses_taken['01040031']))",
+        "equivalents": [
+            "01040275"
+        ],
+        "weight": 4,
+        "rating": 4,
+        "course_average": 71.78947368421052,
+        "moed_a": "2026-02-02",
+        "moed_b": "2026-03-12"
+    },
+    "01040285": {
+        "name": "משוואות דיפרנציאליות רגילות א`",
+        "id": "01040285",
+        "points": 3.5,
+        "prerequisites_logical_expression": "((courses_taken['01040066'] & courses_taken['01040281']) | (courses_taken['01040032'] & courses_taken['01040166']))",
+        "equivalents": [
+            "01040091",
+            "01040094",
+            "01040131",
+            "01040135",
+            "00940323",
+            "00940333",
+            "01040035",
+            "01040090",
+            "01040136",
+            "01040213"
+        ],
+        "weight": 2.5,
+        "rating": 3,
+        "course_average": 75.89473684210526,
+        "moed_a": "2026-02-11",
+        "moed_b": "2026-03-05"
+    },
+    "01040295": {
+        "name": "חשבון אינפיניטסימלי 3",
+        "id": "01040295",
+        "points": 5.0,
+        "prerequisites_logical_expression": "((courses_taken['01040281'] & courses_taken['01040168']) | (courses_taken['01040173'] & courses_taken['01040281']) | (courses_taken['01040168'] & courses_taken['01040032']) | (courses_taken['01040032'] & courses_taken['01040173']) | (courses_taken['01040174'] & courses_taken['01040281']) | (courses_taken['01040174'] & courses_taken['01040032']))",
+        "equivalents": [
+            "01040282",
+            "01040004",
+            "01040013",
+            "01040014",
+            "01040020",
+            "01040022",
+            "01040033",
+            "01040043",
+            "01040044"
+        ],
+        "weight": 4,
+        "rating": 3,
+        "course_average": 73.83333333333333,
+        "moed_a": "2026-02-18",
+        "moed_b": "2026-03-24"
+    },
+    "02360267": {
+        "name": "מבנה מחשבים",
+        "id": "02360267",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02340118'])",
+        "equivalents": [
+            "00460267",
+            "01060867",
+            "02340248",
+            "02340267",
+            "02370267"
+        ],
+        "weight": 2,
+        "rating": 3,
+        "course_average": 80.0,
+        "moed_a": "2026-02-15",
+        "moed_b": "2026-03-24"
+    },
+    "02360343": {
+        "name": "תורת החישוביות",
+        "id": "02360343",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02340247'] | courses_taken['01040291'])",
+        "equivalents": [
+            "00940250",
+            "00460002",
+            "00970447",
+            "01060843",
+            "02140912",
+            "02370343"
+        ],
+        "weight": 3,
+        "rating": 4,
+        "course_average": 70.83333333333333,
+        "moed_a": "2026-02-03",
+        "moed_b": "2026-03-05"
+    },
+    "02360360": {
+        "name": "תורת הקומפילציה",
+        "id": "02360360",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02360353'] | (courses_taken['02340129'] & courses_taken['02340118']) | (courses_taken['02340118'] & courses_taken['01060156'] & courses_taken['01040290']) | (courses_taken['01060156'] & courses_taken['01040293'] & courses_taken['02340118']))",
+        "equivalents": [
+            "00460266",
+            "01060860"
+        ],
+        "weight": 4,
+        "rating": 3,
+        "course_average": 74.61111111111111,
+        "moed_a": "2026-02-10",
+        "moed_b": "2026-03-11"
+    },
+    "01140075": {
+        "name": "פיסיקה 2ממ",
+        "id": "01140075",
+        "points": 5.0,
+        "prerequisites_logical_expression": "(courses_taken['01130014'] & courses_taken['01140071'])",
+        "equivalents": [
+            "01140002",
+            "01140004",
+            "01140014",
+            "01140052",
+            "01140078",
+            "01140072",
+            "01140076",
+            "01140249",
+            "01150249"
+        ],
+        "weight": 4,
+        "rating": 4,
+        "course_average": 78.13333333333334,
+        "moed_a": "2026-02-03",
+        "moed_b": "2026-03-05"
+    },
+    "01140052": {
+        "name": "פיסיקה 2",
+        "id": "01140052",
+        "points": 3.5,
+        "prerequisites_logical_expression": "((courses_taken['01140051'] & courses_taken['01130014']) | (courses_taken['01130014'] & courses_taken['01140071']) | (courses_taken['01140077'] & courses_taken['01130014']))",
+        "equivalents": [
+            "01140002",
+            "01140004",
+            "01140014",
+            "01140064",
+            "01140072",
+            "01140075",
+            "01140076",
+            "01140078",
+            "01140249",
+            "01150249"
+        ],
+        "weight": 3,
+        "rating": 4,
+        "course_average": 75.38709677419355,
+        "moed_a": "2026-02-02",
+        "moed_b": "2026-03-04"
+    },
+    "01140054": {
+        "name": "פיסיקה 3",
+        "id": "01140054",
+        "points": 3.5,
+        "prerequisites_logical_expression": "(courses_taken['01140075'] | courses_taken['01140052'])",
+        "equivalents": [
+            "01140014",
+            "01140065",
+            "01140099",
+            "01140073",
+            "01140053"
+        ],
+        "weight": 1.5,
+        "rating": 5,
+        "course_average": 84.23333333333333,
+        "moed_a": "2026-02-12",
+        "moed_b": "2026-03-08"
+    },
+    "01140073": {
+        "name": "פיזיקה קוונטית להנדסה",
+        "id": "01140073",
+        "points": 3.5,
+        "prerequisites_logical_expression": "((courses_taken['01140075'] & courses_taken['01040131']) | (courses_taken['01140076'] & courses_taken['01040131']) | (courses_taken['01140075'] & courses_taken['01040135']) | (courses_taken['01040135'] & courses_taken['01140076']) | (courses_taken['01140075'] & courses_taken['01040035']) | (courses_taken['01040035'] & courses_taken['01140076']) | (courses_taken['01140075'] & courses_taken['01040136']) | (courses_taken['01040136'] & courses_taken['01140076']) | (courses_taken['01140075'] & courses_taken['01040285']))",
+        "equivalents": [
+            "01140014",
+            "01140053",
+            "01140054",
+            "01140099",
+            "01150203",
+            "01140065"
+        ],
+        "weight": 3,
+        "rating": 4,
+        "course_average": 77.73913043478261,
+        "moed_a": "2026-02-02",
+        "moed_b": "2026-03-25"
+    },
+    "01140101": {
+        "name": "מכניקה אנליטית",
+        "id": "01140101",
+        "points": 4.0,
+        "prerequisites_logical_expression": "((courses_taken['01140076'] & courses_taken['01040135'] & courses_taken['01040013']) | (courses_taken['01040013'] & courses_taken['01140075'] & courses_taken['01040135']) | (courses_taken['01040013'] & courses_taken['01140076'] & courses_taken['01040035']) | (courses_taken['01040035'] & courses_taken['01140075'] & courses_taken['01040013']) | (courses_taken['01040013'] & courses_taken['01040136'] & courses_taken['01140076']) | (courses_taken['01140075'] & courses_taken['01040013'] & courses_taken['01040136']) | (courses_taken['01140076'] & courses_taken['01040281']) | (courses_taken['01040285'] & courses_taken['01140076'] & courses_taken['01040033'] & courses_taken['01040032']) | (courses_taken['01040033'] & courses_taken['01040032'] & courses_taken['01040135'] & courses_taken['01140076']))",
+        "equivalents": [],
+        "weight": 4,
+        "rating": 4,
+        "course_average": 78.81818181818181,
+        "moed_a": "2026-02-25",
+        "moed_b": "2026-03-22"
+    },
+    "01240120": {
+        "name": "יסודות הכימיה",
+        "id": "01240120",
+        "points": 5.0,
+        "prerequisites_logical_expression": "(courses_taken['01230015'])",
+        "equivalents": [
+            "01240002",
+            "01240051",
+            "01240104",
+            "01240114",
+            "01240115",
+            "01240116",
+            "01250001",
+            "01250011",
+            "01240001",
+            "01240011",
+            "01240014",
+            "01240105",
+            "01240117",
+            "01240118",
+            "01240507"
+        ],
+        "weight": 3,
+        "rating": 4,
+        "course_average": 75.75,
+        "moed_a": "2026-02-20",
+        "moed_b": "2026-03-18"
+    },
+    "01250001": {
+        "name": "כימיה כללית",
+        "id": "01250001",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [
+            "01240002",
+            "01240051",
+            "01240104",
+            "01250011",
+            "01240001",
+            "01240010",
+            "01240011",
+            "01240114",
+            "01240115",
+            "01240116",
+            "01240120",
+            "01240122",
+            "01240107",
+            "01240108",
+            "01240117",
+            "01240118",
+            "01240507"
+        ],
+        "weight": 3,
+        "rating": 4,
+        "course_average": 71.76190476190476,
+        "moed_a": "2026-02-22",
+        "moed_b": "2026-03-18"
+    },
+    "01240510": {
+        "name": "כימיה פיסיקלית",
+        "id": "01240510",
+        "points": 4.0,
+        "prerequisites_logical_expression": "((courses_taken['01040004'] & courses_taken['01040003'] & courses_taken['01250001']) | (courses_taken['01040004'] & courses_taken['01040003'] & courses_taken['01240120']))",
+        "equivalents": [
+            "01240415",
+            "01240411",
+            "01240412",
+            "01240414",
+            "01240503",
+            "01240504",
+            "01240507",
+            "01240509"
+        ],
+        "weight": 4,
+        "rating": 3,
+        "course_average": 76.7,
+        "moed_a": "2026-02-08",
+        "moed_b": "2026-03-09"
+    },
+    "01340058": {
+        "name": "ביולוגיה 1",
+        "id": "01340058",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [
+            "01340066",
+            "01340012",
+            "00150904",
+            "01340010",
+            "01340017",
+            "01340127"
+        ],
+        "weight": 1.5,
+        "rating": 4,
+        "course_average": 80.41935483870968,
+        "moed_a": "2026-02-26",
+        "moed_b": "2026-03-26"
+    },
+    "01340020": {
+        "name": "גנטיקה כללית",
+        "id": "01340020",
+        "points": 3.5,
+        "prerequisites_logical_expression": "(courses_taken['01340058'] | courses_taken['01340127'])",
+        "equivalents": [
+            "02740010",
+            "02740165",
+            "02740223"
+        ],
+        "weight": 2.5,
+        "rating": 3,
+        "course_average": 76.03703703703704,
+        "moed_a": "2026-02-17",
+        "moed_b": "2026-03-16"
+    },
+    "02340268": {
+        "name": "מבני נתונים ואלגוריתמים",
+        "id": "02340268",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02340128'])",
+        "equivalents": [
+            "00440268",
+            "00940223",
+            "02340218"
+        ],
+        "weight": -1,
+        "rating": -1,
+        "course_average": null,
+        "moed_a": "2026-02-13",
+        "moed_b": "2026-03-13"
+    },
+    "02340313": {
+        "name": "פרויקט תעשייתי",
+        "id": "02340313",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [],
+        "weight": -1,
+        "rating": -1,
+        "course_average": 94.625,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02340329": {
+        "name": "פרויקט בעיבוד וניתוח תמונות",
+        "id": "02340329",
+        "points": 4.0,
+        "prerequisites_logical_expression": "(courses_taken['02340325'] | courses_taken['00460200'] | courses_taken['00460345'] | courses_taken['02360873'] | courses_taken['02360327'] | courses_taken['02360861'] | courses_taken['02360860'])",
+        "equivalents": [],
+        "weight": -1,
+        "rating": -1,
+        "course_average": 97.57142857142857,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360003": {
+        "name": "אלגוריתמי ניהול לקבלת החלטות",
+        "id": "02360003",
+        "points": 2.0,
+        "prerequisites_logical_expression": "(courses_taken['02360363'])",
+        "equivalents": [],
+        "weight": 3,
+        "rating": 3,
+        "course_average": 94.0,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360005": {
+        "name": "נושאים נבחרים במערכות הפעלה",
+        "id": "02360005",
+        "points": 2.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [],
+        "weight": 1,
+        "rating": 5,
+        "course_average": 91.0,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360006": {
+        "name": "נושאים בבינה מלאכותית ורובוטיקה",
+        "id": "02360006",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02360501'] | courses_taken['02360756'])",
+        "equivalents": [],
+        "weight": 2,
+        "rating": 4,
+        "course_average": 93.5,
+        "moed_a": "2026-02-15",
+        "moed_b": "2026-03-16"
+    },
+    "02360007": {
+        "name": "נושאים בלמידה לראייה ממוחשבת בתלת מימד",
+        "id": "02360007",
+        "points": 2.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [],
+        "weight": 5,
+        "rating": 3,
+        "course_average": null,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360125": {
+        "name": "פרויקט בלמידה ואבטחת מערכות מחשב",
+        "id": "02360125",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['00460267'] & courses_taken['00440252'] & courses_taken['02360267'])",
+        "equivalents": [],
+        "weight": -1,
+        "rating": -1,
+        "course_average": null,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360201": {
+        "name": "מבוא לייצוג ועיבוד מידע",
+        "id": "02360201",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['01040174'] | courses_taken['02340125'] | courses_taken['00440131'])",
+        "equivalents": [
+            "02360200",
+            "02360327"
+        ],
+        "weight": 3.5,
+        "rating": 3,
+        "course_average": 80.14285714285714,
+        "moed_a": "2026-02-13",
+        "moed_b": "2026-03-09"
+    },
+    "02360207": {
+        "name": "נושאים על מודלי למידה עמוקה",
+        "id": "02360207",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [],
+        "weight": -1,
+        "rating": -1,
+        "course_average": 95.0,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360216": {
+        "name": "גרפיקה ממוחשבת 1",
+        "id": "02360216",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02340218'] | courses_taken['00440268'])",
+        "equivalents": [
+            "00350003",
+            "00460345",
+            "02340325"
+        ],
+        "weight": 5,
+        "rating": 3,
+        "course_average": 85.5,
+        "moed_a": "2026-02-06",
+        "moed_b": "2026-03-05"
+    },
+    "02360271": {
+        "name": "פיתוח מבוסס אנדרואיד",
+        "id": "02360271",
+        "points": 2.0,
+        "prerequisites_logical_expression": "(courses_taken['02360703'] | (courses_taken['02340311'] & courses_taken['02340312']))",
+        "equivalents": [],
+        "weight": 4,
+        "rating": 4,
+        "course_average": 85.25,
+        "moed_a": "2026-02-11",
+        "moed_b": "2026-03-08"
+    },
+    "02360272": {
+        "name": "פרויקט פיתוח מבוסס אנדרואיד",
+        "id": "02360272",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02360703'] | (courses_taken['02340312'] & courses_taken['02340311']))",
+        "equivalents": [],
+        "weight": 5,
+        "rating": 4,
+        "course_average": 90.625,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360322": {
+        "name": "מערכות אחסון מידע",
+        "id": "02360322",
+        "points": 3.0,
+        "prerequisites_logical_expression": "((courses_taken['02340123'] & courses_taken['02340218'] & courses_taken['00940412']) | (courses_taken['00940412'] & courses_taken['00460209'] & courses_taken['02340218']) | (courses_taken['02340218'] & courses_taken['02340123'] & courses_taken['01040034']) | (courses_taken['01040034'] & courses_taken['02340218'] & courses_taken['00460209']))",
+        "equivalents": [
+            "02340322"
+        ],
+        "weight": 3,
+        "rating": 3,
+        "course_average": 77.28571428571429,
+        "moed_a": "2026-02-06",
+        "moed_b": "2026-03-16"
+    },
+    "02360332": {
+        "name": "האינטרנט של הדברים - טכנולוגיות ויישומים",
+        "id": "02360332",
+        "points": 2.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [
+            "00970247"
+        ],
+        "weight": 1.5,
+        "rating": 3,
+        "course_average": 87.21428571428571,
+        "moed_a": "2026-02-03",
+        "moed_b": "2026-03-08"
+    },
+    "02360333": {
+        "name": "פרויקט באינטרנט של הדברים",
+        "id": "02360333",
+        "points": 3.0,
+        "prerequisites_logical_expression": "((courses_taken['02340122'] & courses_taken['02340262']) | (courses_taken['02340252'] & courses_taken['02340124']) | (courses_taken['02340124'] & courses_taken['00440252']))",
+        "equivalents": [],
+        "weight": 3.5,
+        "rating": 3,
+        "course_average": 92.35714285714286,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360334": {
+        "name": "מבוא לרשתות מחשבים",
+        "id": "02360334",
+        "points": 3.0,
+        "prerequisites_logical_expression": "((courses_taken['00940412'] & courses_taken['02340218']) | (courses_taken['02340218'] & courses_taken['01040034']))",
+        "equivalents": [
+            "00440334"
+        ],
+        "weight": 2.5,
+        "rating": 4,
+        "course_average": 78.9375,
+        "moed_a": "2026-02-26",
+        "moed_b": "2026-03-19"
+    },
+    "02360340": {
+        "name": "פרויקט בתקשורת מחשבים",
+        "id": "02360340",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02360334'])",
+        "equivalents": [],
+        "weight": -1,
+        "rating": -1,
+        "course_average": 93.16666666666667,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360342": {
+        "name": "מבוא לאימות תוכנה",
+        "id": "02360342",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02340293'] | courses_taken['02340292'])",
+        "equivalents": [],
+        "weight": 2.5,
+        "rating": 4,
+        "course_average": 79.0,
+        "moed_a": "2026-02-19",
+        "moed_b": "2026-03-09"
+    },
+    "02360349": {
+        "name": "פרויקט באבטחת מידע",
+        "id": "02360349",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02360350'])",
+        "equivalents": [],
+        "weight": -1,
+        "rating": -1,
+        "course_average": 92.33333333333333,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360350": {
+        "name": "הגנה ברשתות",
+        "id": "02360350",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02340123'] | courses_taken['00460209'])",
+        "equivalents": [],
+        "weight": 3,
+        "rating": 4,
+        "course_average": 78.0,
+        "moed_a": "2026-02-22",
+        "moed_b": "2026-03-16"
+    },
+    "02360351": {
+        "name": "מערכות מבוזרות",
+        "id": "02360351",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02360334'] & courses_taken['02360370'] & courses_taken['02340123'])",
+        "equivalents": [
+            "00460001"
+        ],
+        "weight": 5,
+        "rating": 3,
+        "course_average": 87.75,
+        "moed_a": "2026-02-19",
+        "moed_b": "2026-03-24"
+    },
+    "02360363": {
+        "name": "מסדי נתונים",
+        "id": "02360363",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02340293'] | courses_taken['02340292'])",
+        "equivalents": [
+            "00940240",
+            "00940241"
+        ],
+        "weight": 3,
+        "rating": 3,
+        "course_average": 78.6875,
+        "moed_a": "2026-02-17",
+        "moed_b": "2026-03-22"
+    },
+    "02360366": {
+        "name": "פרויקט במערכות הפעלה מ`",
+        "id": "02360366",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02340123'])",
+        "equivalents": [
+            "02340303"
+        ],
+        "weight": -1,
+        "rating": -1,
+        "course_average": null,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360370": {
+        "name": "תכנות מקבילי ומבוזר לעיבוד נתונים ולמידה חישובית",
+        "id": "02360370",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02340123'] | courses_taken['00460209'])",
+        "equivalents": [],
+        "weight": 2.5,
+        "rating": 2,
+        "course_average": 81.66666666666667,
+        "moed_a": "2026-02-24",
+        "moed_b": "2026-03-19"
+    },
+    "02360374": {
+        "name": "שיטות הסתברותיות ואלגוריתמים",
+        "id": "02360374",
+        "points": 3.0,
+        "prerequisites_logical_expression": "((courses_taken['02340247'] & courses_taken['00940412']) | (courses_taken['00940412'] & courses_taken['01040291']) | (courses_taken['01040222'] & courses_taken['02340247']) | (courses_taken['01040291'] & courses_taken['01040222']))",
+        "equivalents": [
+            "00970329"
+        ],
+        "weight": 4.5,
+        "rating": 3,
+        "course_average": 92.0,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360379": {
+        "name": "קידוד ואלגוריתמים לזכרונות",
+        "id": "02360379",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['01040134'] & courses_taken['02340247'])",
+        "equivalents": [],
+        "weight": 4.5,
+        "rating": 4,
+        "course_average": 92.75,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360491": {
+        "name": "תכנות מאובטח",
+        "id": "02360491",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02340124'])",
+        "equivalents": [],
+        "weight": 3.5,
+        "rating": 4,
+        "course_average": 79.75,
+        "moed_a": "2026-02-05",
+        "moed_b": "2026-03-05"
+    },
+    "02360501": {
+        "name": "מבוא לבינה מלאכותית",
+        "id": "02360501",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [
+            "00960210"
+        ],
+        "weight": 3.5,
+        "rating": 4,
+        "course_average": 84.14285714285714,
+        "moed_a": "2026-02-08",
+        "moed_b": "2026-03-15"
+    },
+    "02360502": {
+        "name": "פרויקט בבינה מלאכותית",
+        "id": "02360502",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02360501'])",
+        "equivalents": [
+            "02340304"
+        ],
+        "weight": 4,
+        "rating": 3,
+        "course_average": 95.71428571428571,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360503": {
+        "name": "פרויקט תכנות מתקדם במדעי המחשב 1",
+        "id": "02360503",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [],
+        "weight": -1,
+        "rating": -1,
+        "course_average": 94.375,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360504": {
+        "name": "פרויקט המשך בתוכנה",
+        "id": "02360504",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [],
+        "weight": -1,
+        "rating": -1,
+        "course_average": 95.25,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360521": {
+        "name": "אלגוריתמי קירוב",
+        "id": "02360521",
+        "points": 2.0,
+        "prerequisites_logical_expression": "(courses_taken['02340247'] & courses_taken['02360343'])",
+        "equivalents": [],
+        "weight": 4,
+        "rating": 4,
+        "course_average": 84.0,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360523": {
+        "name": "מבוא לביואינפורמטיקה",
+        "id": "02360523",
+        "points": 2.5,
+        "prerequisites_logical_expression": "((courses_taken['02340127'] & courses_taken['01340127']) | (courses_taken['01340058'] & courses_taken['02340112']) | (courses_taken['02340112'] & courses_taken['01340127']) | (courses_taken['01340058'] & courses_taken['02340114']) | (courses_taken['02340114'] & courses_taken['01340127']) | (courses_taken['01340058'] & courses_taken['02340128']) | (courses_taken['02340128'] & courses_taken['01340127']) | (courses_taken['01340058'] & courses_taken['02340127']))",
+        "equivalents": [
+            "01340158",
+            "02340523",
+            "02340525"
+        ],
+        "weight": 2.5,
+        "rating": 3,
+        "course_average": 89.44444444444444,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360524": {
+        "name": "פרוייקט בביואינפורמטיקה",
+        "id": "02360524",
+        "points": 3.0,
+        "prerequisites_logical_expression": "((courses_taken['02360523'] & courses_taken['02360522']) | (courses_taken['02340218'] & courses_taken['01340058'] & courses_taken['01340020']))",
+        "equivalents": [],
+        "weight": -1,
+        "rating": -1,
+        "course_average": null,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360620": {
+        "name": "נושאים מתקדמים באלגוריתמים ה`",
+        "id": "02360620",
+        "points": 2.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [
+            "02360669"
+        ],
+        "weight": 3,
+        "rating": 3,
+        "course_average": 89.6,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360634": {
+        "name": "נושאים מתקדמים ברשתות תקשורת מחשבים ה`",
+        "id": "02360634",
+        "points": 2.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [],
+        "weight": -1,
+        "rating": -1,
+        "course_average": null,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360667": {
+        "name": "נו. במערכות לומדות והתנהגות אנושי",
+        "id": "02360667",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02360756'])",
+        "equivalents": [],
+        "weight": -1,
+        "rating": -1,
+        "course_average": 95.0,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360700": {
+        "name": "תיכון תוכנה",
+        "id": "02360700",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02360703'])",
+        "equivalents": [],
+        "weight": 4,
+        "rating": 3,
+        "course_average": 78.0,
+        "moed_a": "2026-02-09",
+        "moed_b": "2026-03-09"
+    },
+    "02360703": {
+        "name": "תכנות מונחה עצמים",
+        "id": "02360703",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02340319'] | courses_taken['02360319'])",
+        "equivalents": [
+            "00450113",
+            "00460271"
+        ],
+        "weight": 3.5,
+        "rating": 4,
+        "course_average": 77.70588235294117,
+        "moed_a": "2026-02-09",
+        "moed_b": "2026-03-09"
+    },
+    "02360719": {
+        "name": "גאומטריה חישובית",
+        "id": "02360719",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02340218'])",
+        "equivalents": [],
+        "weight": 3,
+        "rating": 4,
+        "course_average": 86.0,
+        "moed_a": "2026-02-17",
+        "moed_b": ""
+    },
+    "02360754": {
+        "name": "פרויקט במערכות נבונות",
+        "id": "02360754",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02360861'] | courses_taken['02360927'] | courses_taken['02360873'] | courses_taken['02360860'] | courses_taken['02360716'] | courses_taken['02360373'] | courses_taken['02360327'] | courses_taken['02360501'])",
+        "equivalents": [],
+        "weight": -1,
+        "rating": -1,
+        "course_average": 97.0,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360757": {
+        "name": "פרויקט במערכות לומדות",
+        "id": "02360757",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['00460211'] | courses_taken['02360781'])",
+        "equivalents": [],
+        "weight": -1,
+        "rating": -1,
+        "course_average": 97.25,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360768": {
+        "name": "פרויקט ברובוטיקה",
+        "id": "02360768",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02360501'])",
+        "equivalents": [],
+        "weight": -1,
+        "rating": -1,
+        "course_average": null,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360780": {
+        "name": "אלגוריתמים לניהול זיכרון דינמי",
+        "id": "02360780",
+        "points": 2.0,
+        "prerequisites_logical_expression": "(courses_taken['02340247'] & courses_taken['02340123'])",
+        "equivalents": [],
+        "weight": 2,
+        "rating": 5,
+        "course_average": 87.66666666666667,
+        "moed_a": "2026-02-19",
+        "moed_b": "2026-03-13"
+    },
+    "02360781": {
+        "name": "למידה עמוקה על מאיצים חישוביים",
+        "id": "02360781",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02340125'] | courses_taken['02360201'] | courses_taken['02360200'] | courses_taken['00460195'] | courses_taken['00440198'] | courses_taken['02360756'])",
+        "equivalents": [
+            "03360033",
+            "00460211",
+            "00970209"
+        ],
+        "weight": 4.5,
+        "rating": 3,
+        "course_average": 92.72727272727273,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360813": {
+        "name": "סמינר באלגוריתמים",
+        "id": "02360813",
+        "points": 2.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [],
+        "weight": 3,
+        "rating": 3,
+        "course_average": 91.4,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360819": {
+        "name": "סמינר ברשתות תקשורת מחשבים",
+        "id": "02360819",
+        "points": 2.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [
+            "00480892"
+        ],
+        "weight": 2.5,
+        "rating": 4,
+        "course_average": 93.0,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360825": {
+        "name": "סמינר באלגוריתמים מבוזרים",
+        "id": "02360825",
+        "points": 2.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [],
+        "weight": 2.5,
+        "rating": 4,
+        "course_average": 92.66666666666667,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360828": {
+        "name": "פרויקט במערכות מחשבים",
+        "id": "02360828",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02340123'] | courses_taken['00460209'])",
+        "equivalents": [],
+        "weight": -1,
+        "rating": -1,
+        "course_average": 97.0,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360833": {
+        "name": "סמינר באוטומטים ושפות פורמליות",
+        "id": "02360833",
+        "points": 2.0,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [],
+        "weight": 1.5,
+        "rating": 5,
+        "course_average": 92.5,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360860": {
+        "name": "עיבוד תמונות דיגיטלי",
+        "id": "02360860",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02360327'] | courses_taken['02360201'] | courses_taken['02360200'] | courses_taken['00440130'])",
+        "equivalents": [
+            "00460200"
+        ],
+        "weight": 3.5,
+        "rating": 4,
+        "course_average": 92.75,
+        "moed_a": "2026-02-13",
+        "moed_b": "2026-03-09"
+    },
+    "02360861": {
+        "name": "ראיה חישובית גאומטרית",
+        "id": "02360861",
+        "points": 3.0,
+        "prerequisites_logical_expression": "((courses_taken['02340247'] & courses_taken['01040013']) | (courses_taken['01040013'] & courses_taken['00440198']) | (courses_taken['02340247'] & courses_taken['01040032']) | (courses_taken['01040032'] & courses_taken['00440198']) | (courses_taken['01040281'] & courses_taken['02340247']) | (courses_taken['00440198'] & courses_taken['01040281']))",
+        "equivalents": [],
+        "weight": -1,
+        "rating": -1,
+        "course_average": null,
+        "moed_a": "2026-02-10",
+        "moed_b": "2026-03-11"
+    },
+    "02360874": {
+        "name": "פרויקט בראיה ממוחשבת",
+        "id": "02360874",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02360327'] | courses_taken['02360873'])",
+        "equivalents": [],
+        "weight": -1,
+        "rating": -1,
+        "course_average": null,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "02360767": {
+        "name": "אלגוריתמים לתכנון תנועה רובוטי",
+        "id": "02360767",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02360501'])",
+        "equivalents": [],
+        "weight": 3,
+        "rating": 5,
+        "course_average": 83.0,
+        "moed_a": "2026-02-05",
+        "moed_b": "2026-03-17"
+    },
+    "02360927": {
+        "name": "מבוא לרובוטיקה",
+        "id": "02360927",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['02340247'] & courses_taken['02340218'])",
+        "equivalents": [
+            "00350001",
+            "00460212",
+            "00460213"
+        ],
+        "weight": 5,
+        "rating": 2,
+        "course_average": 90.66666666666667,
+        "moed_a": "None",
+        "moed_b": "2026-03-09"
+    },
+    "02360990": {
+        "name": "מבוא לעיבוד אינפורמציה קוונטית",
+        "id": "02360990",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['01240400'] | courses_taken['01140073'] | courses_taken['01150203'] | (courses_taken['01140071'] & courses_taken['01040122']) | (courses_taken['01040034'] & courses_taken['01140075'] & courses_taken['00460002']) | (courses_taken['01140071'] & courses_taken['02340247']))",
+        "equivalents": [
+            "03240272",
+            "01160031",
+            "01270446"
+        ],
+        "weight": 2.5,
+        "rating": 3,
+        "course_average": 84.71428571428571,
+        "moed_a": "2026-02-12",
+        "moed_b": "2026-03-08"
+    },
+    "00440105": {
+        "name": "תורת המעגלים החשמליים",
+        "id": "00440105",
+        "points": 4.0,
+        "prerequisites_logical_expression": "((courses_taken['01140075'] & courses_taken['01040035']) | (courses_taken['01040131'] & courses_taken['01140052']) | (courses_taken['01140076'] & courses_taken['01040035']) | (courses_taken['01140075'] & courses_taken['01040135']) | (courses_taken['01040136'] & courses_taken['01140075']) | (courses_taken['01140076'] & courses_taken['01040136']) | (courses_taken['01140075'] & courses_taken['01040000']))",
+        "equivalents": [
+            "00440098",
+            "00440109",
+            "00340060"
+        ],
+        "weight": 3.5,
+        "rating": 4,
+        "course_average": 78.04545454545455,
+        "moed_a": "2026-02-27",
+        "moed_b": "2026-03-27"
+    },
+    "00440127": {
+        "name": "יסודות התקני מוליכים למחצה",
+        "id": "00440127",
+        "points": 3.5,
+        "prerequisites_logical_expression": "((courses_taken['01040035'] & courses_taken['01140075']) | (courses_taken['01140075'] & courses_taken['01040220']) | (courses_taken['01040220'] & courses_taken['01140076']) | (courses_taken['01140075'] & courses_taken['01040295']) | (courses_taken['01140076'] & courses_taken['01040295']))",
+        "equivalents": [
+            "03150016",
+            "00440125",
+            "01170018",
+            "01180119"
+        ],
+        "weight": 3.5,
+        "rating": 4,
+        "course_average": 78.07692307692308,
+        "moed_a": "2026-02-11",
+        "moed_b": "2026-03-09"
+    },
+    "00440131": {
+        "name": "אותות ומערכות",
+        "id": "00440131",
+        "points": 5.0,
+        "prerequisites_logical_expression": "(courses_taken['00440191'] | (courses_taken['00440105'] & courses_taken['01040214']) | (courses_taken['01040221'] & courses_taken['01040223'] & courses_taken['00440105']) | (courses_taken['01140071'] & courses_taken['01040285'] & courses_taken['01040276'] & courses_taken['01040122']))",
+        "equivalents": [
+            "00440195",
+            "00440130"
+        ],
+        "weight": 4,
+        "rating": 4,
+        "course_average": 79.26666666666667,
+        "moed_a": "2026-02-22",
+        "moed_b": "2026-03-19"
+    },
+    "00440137": {
+        "name": "מעגלים אלקטרוניים",
+        "id": "00440137",
+        "points": 5.0,
+        "prerequisites_logical_expression": "((courses_taken['00440252'] & courses_taken['00440105'] & courses_taken['00440130'] & courses_taken['00440125']) | (courses_taken['00440105'] & courses_taken['00440127'] & courses_taken['00440130'] & courses_taken['00440252']) | (courses_taken['00440252'] & courses_taken['00440105'] & courses_taken['00440131'] & courses_taken['00440125']) | (courses_taken['00440131'] & courses_taken['00440127'] & courses_taken['00440105'] & courses_taken['00440252']))",
+        "equivalents": [
+            "00440142",
+            "00440147"
+        ],
+        "weight": 4,
+        "rating": 4,
+        "course_average": 79.38461538461539,
+        "moed_a": "2026-02-26",
+        "moed_b": "2026-03-27"
+    },
+    "00440157": {
+        "name": "מעבדה בהנדסת חשמל 1א",
+        "id": "00440157",
+        "points": 2.0,
+        "prerequisites_logical_expression": "((courses_taken['00440252'] & courses_taken['00440102'] & courses_taken['01140075']) | (courses_taken['01140075'] & courses_taken['00440145'] & courses_taken['00440102'] & courses_taken['00440262']) | (courses_taken['00440102'] & courses_taken['01140075'] & courses_taken['02340262'] & courses_taken['02340145']) | (courses_taken['00440102'] & courses_taken['00440252'] & courses_taken['01140076']) | (courses_taken['01140076'] & courses_taken['00440145'] & courses_taken['00440102'] & courses_taken['00440262']) | (courses_taken['00440262'] & courses_taken['01140075'] & courses_taken['02340145'] & courses_taken['00440102']))",
+        "equivalents": [
+            "00440151",
+            "00440160"
+        ],
+        "weight": 4.5,
+        "rating": 4,
+        "course_average": 95.6842105263158,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "00440167": {
+        "name": "פרוייקט א`",
+        "id": "00440167",
+        "points": 4.0,
+        "prerequisites_logical_expression": "((courses_taken['00440102'] & courses_taken['00440151']) | (courses_taken['00440160'] & courses_taken['00440102']) | (courses_taken['00440102'] & courses_taken['00440157']))",
+        "equivalents": [],
+        "weight": 2,
+        "rating": 4,
+        "course_average": 95.85,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "00440169": {
+        "name": "פרויקט  ב",
+        "id": "00440169",
+        "points": 4.0,
+        "prerequisites_logical_expression": "((courses_taken['00440160'] & courses_taken['00440167'] & courses_taken['00440102']) | (courses_taken['00440102'] & courses_taken['00440151'] & courses_taken['00440167']) | (courses_taken['00440157'] & courses_taken['00440167'] & courses_taken['00440102']))",
+        "equivalents": [
+            "00440001",
+            "00440173"
+        ],
+        "weight": 4,
+        "rating": 5,
+        "course_average": 96.26315789473684,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "00440202": {
+        "name": "אותות אקראיים",
+        "id": "00440202",
+        "points": 3.0,
+        "prerequisites_logical_expression": "((courses_taken['00440131'] & courses_taken['00940412']) | (courses_taken['00440131'] & courses_taken['01040222']) | (courses_taken['00440130'] & courses_taken['00940412']) | (courses_taken['00440130'] & courses_taken['01040222']) | (courses_taken['01040034'] & courses_taken['00440130']) | (courses_taken['00440131'] & courses_taken['01040034']))",
+        "equivalents": [
+            "00840733",
+            "00860733"
+        ],
+        "weight": 3.5,
+        "rating": 3,
+        "course_average": 75.27272727272727,
+        "moed_a": "2026-02-11",
+        "moed_b": "2026-03-09"
+    },
+    "00460201": {
+        "name": "עיבוד אותות אקראיים",
+        "id": "00460201",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['00440202'])",
+        "equivalents": [],
+        "weight": 3.5,
+        "rating": 5,
+        "course_average": 78.0,
+        "moed_a": "2026-02-26",
+        "moed_b": "2026-03-24"
+    },
+    "00460206": {
+        "name": "מבוא לתקשורת ספרתית",
+        "id": "00460206",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['00440202'])",
+        "equivalents": [],
+        "weight": 3.5,
+        "rating": 4,
+        "course_average": 78.92857142857143,
+        "moed_a": "2026-02-22",
+        "moed_b": "2026-03-18"
+    },
+    "00460332": {
+        "name": "מערכות ראיה ושמיעה",
+        "id": "00460332",
+        "points": 3.0,
+        "prerequisites_logical_expression": "(courses_taken['00440131'] | courses_taken['00440130'])",
+        "equivalents": [],
+        "weight": 1.5,
+        "rating": 4,
+        "course_average": 81.05555555555556,
+        "moed_a": "2026-02-11",
+        "moed_b": "2026-03-22"
+    },
+    "00460880": {
+        "name": "תכן לוגי ממוחשב של שבבים",
+        "id": "00460880",
+        "points": 3.0,
+        "prerequisites_logical_expression": "((courses_taken['00440268'] & courses_taken['00440252']) | (courses_taken['00440252'] & courses_taken['02340247']) | (courses_taken['02340247'] & courses_taken['02340262']))",
+        "equivalents": [
+            "00480880"
+        ],
+        "weight": 5,
+        "rating": 3,
+        "course_average": 86.2,
+        "moed_a": "2026-02-09",
+        "moed_b": "2026-03-08"
+    },
+    "00940222": {
+        "name": "הנדסת מערכות מבוססת מודלים",
+        "id": "00940222",
+        "points": 3.5,
+        "prerequisites_logical_expression": "(courses_taken['No Prerequisites'])",
+        "equivalents": [],
+        "weight": 2.5,
+        "rating": 4,
+        "course_average": 89.15384615384616,
+        "moed_a": null,
+        "moed_b": null
+    },
+    "00940314": {
+        "name": "מודלים סטוכסטיים בחקר בצועים",
+        "id": "00940314",
+        "points": 3.5,
+        "prerequisites_logical_expression": "((courses_taken['01040019'] & courses_taken['02340221'] & courses_taken['00940411']) | (courses_taken['00940411'] & courses_taken['02340221'] & courses_taken['01040016']) | (courses_taken['01040019'] & courses_taken['02340111'] & courses_taken['00940411']) | (courses_taken['00940412'] & courses_taken['01040166'] & courses_taken['02340117']) | (courses_taken['00940411'] & courses_taken['01040065'] & courses_taken['02340221']))",
+        "equivalents": [
+            "00940390"
+        ],
+        "weight": 3,
+        "rating": 4,
+        "course_average": 72.52941176470588,
+        "moed_a": "2026-02-06",
+        "moed_b": "2026-03-16"
+    },
+    "00940333": {
+        "name": "מודלים דינמיים בחקר ביצועים",
+        "id": "00940333",
+        "points": 3.0,
+        "prerequisites_logical_expression": "((courses_taken['00940346'] & courses_taken['01040020']) | (courses_taken['01040022'] & courses_taken['00940347']) | (courses_taken['00940345'] & courses_taken['01040022']))",
+        "equivalents": [
+            "00340019",
+            "00340032",
+            "00440130",
+            "00440190",
+            "00440194",
+            "00940323",
+            "01040131",
+            "01040135",
+            "01040213",
+            "01040285"
+        ],
+        "weight": 1.5,
+        "rating": 4,
+        "course_average": 81.125,
+        "moed_a": "2026-02-11",
+        "moed_b": "2026-03-24"
+    },
+    "00940423": {
+        "name": "מבוא לסטטיסטיקה",
+        "id": "00940423",
+        "points": 3.5,
+        "prerequisites_logical_expression": "(courses_taken['00940411'] | courses_taken['00940412'] | courses_taken['01040034'])",
+        "equivalents": [
+            "00940429",
+            "00940480",
+            "00940481",
+            "00940493",
+            "00460010",
+            "00940424",
+            "00940490",
+            "03340023"
+        ],
+        "weight": 4,
+        "rating": 4,
+        "course_average": 77.77272727272727,
+        "moed_a": "2026-02-08",
+        "moed_b": "2026-03-08"
+    },
+    "00940591": {
+        "name": "מבוא לכלכלה",
+        "id": "00940591",
+        "points": 3.5,
+        "prerequisites_logical_expression": "(courses_taken['01040017'] | courses_taken['01040018'] | courses_taken['01040031'] | courses_taken['01040195'] | courses_taken['01040003'] | courses_taken['01040042'])",
+        "equivalents": [
+            "00940501",
+            "00940511",
+            "00960501",
+            "00940592",
+            "00940593",
+            "00940594"
+        ],
+        "weight": 1.5,
+        "rating": 4,
+        "course_average": 81.51724137931035,
+        "moed_a": "2026-02-18",
+        "moed_b": "2026-03-12"
+    },
+    "00960250": {
+        "name": "מערכות מידע מבוזרות",
+        "id": "00960250",
+        "points": 3.5,
+        "prerequisites_logical_expression": "((courses_taken['00940210'] & courses_taken['00940224']) | (courses_taken['00940210'] & courses_taken['00940226']) | (courses_taken['00940210'] & courses_taken['02340247']))",
+        "equivalents": [],
+        "weight": 3,
+        "rating": 3,
+        "course_average": 80.2,
+        "moed_a": "2026-02-09",
+        "moed_b": "2026-03-10"
+    },
+    "00960411": {
+        "name": "למידה חישובית 1",
+        "id": "00960411",
+        "points": 3.5,
+        "prerequisites_logical_expression": "((courses_taken['00940423'] & courses_taken['02340117']) | (courses_taken['02340221'] & courses_taken['00940423']) | (courses_taken['00940424'] & courses_taken['02340117']) | (courses_taken['02340221'] & courses_taken['00940424']))",
+        "equivalents": [
+            "02360766",
+            "00350054"
+        ],
+        "weight": 3.5,
+        "rating": 4,
+        "course_average": 80.57142857142857,
+        "moed_a": "2026-02-11",
+        "moed_b": "2026-03-06"
+    },
+    "00970317": {
+        "name": "תורת המשחקים השיתופיים",
+        "id": "00970317",
+        "points": 2.5,
+        "prerequisites_logical_expression": "(courses_taken['01040065'] | courses_taken['01040016'] | courses_taken['01040166'])",
+        "equivalents": [
+            "00940317",
+            "01060173"
+        ],
+        "weight": 2,
+        "rating": 4,
+        "course_average": 80.71428571428571,
+        "moed_a": "2026-02-24",
+        "moed_b": "2026-03-22"
+    },
+    "01040165": {
+        "name": "פונקציות ממשיות",
+        "id": "01040165",
+        "points": 3.5,
+        "prerequisites_logical_expression": "(courses_taken['01040281'] | courses_taken['01040032'])",
+        "equivalents": [],
+        "weight": 5,
+        "rating": 4,
+        "course_average": 76.66666666666667,
+        "moed_a": "2026-02-19",
+        "moed_b": "2026-03-19"
+    },
+    "01040158": {
+        "name": "מבוא לחבורות",
+        "id": "01040158",
+        "points": 3.5,
+        "prerequisites_logical_expression": "(courses_taken['01040174'] | courses_taken['01040173'] | courses_taken['01040168'])",
+        "equivalents": [
+            "01040172",
+            "01040134"
+        ],
+        "weight": 3,
+        "rating": 4,
+        "course_average": 76.9,
+        "moed_a": "2026-02-05",
+        "moed_b": "2026-03-17"
+    },
+    "01040192": {
+        "name": "מבוא למתמטיקה שמושית",
+        "id": "01040192",
+        "points": 3.0,
+        "prerequisites_logical_expression": "((courses_taken['01040282'] & courses_taken['01040285']) | (courses_taken['01040285'] & courses_taken['01040013']) | (courses_taken['01040285'] & courses_taken['01040033']) | (courses_taken['01040282'] & courses_taken['01040135']) | (courses_taken['01040135'] & courses_taken['01040013']) | (courses_taken['01040295'] & courses_taken['01040285']) | (courses_taken['01040282'] & courses_taken['01040035']) | (courses_taken['01040035'] & courses_taken['01040013']) | (courses_taken['01040295'] & courses_taken['01040135']))",
+        "equivalents": [],
+        "weight": 3,
+        "rating": 3,
+        "course_average": 79.13333333333334,
+        "moed_a": "2026-02-06",
+        "moed_b": "2026-03-06"
+    },
+    "01040279": {
+        "name": "מבוא לחוגים ושדות",
+        "id": "01040279",
+        "points": 2.5,
+        "prerequisites_logical_expression": "(courses_taken['01040158'] | courses_taken['01040172'])",
+        "equivalents": [
+            "01040134"
+        ],
+        "weight": 2.5,
+        "rating": 4,
+        "course_average": 77.5,
+        "moed_a": "2026-02-26",
+        "moed_b": "2026-03-24"
+    },
+    "01040293": {
+        "name": "תורת הקבוצות",
+        "id": "01040293",
+        "points": 2.5,
+        "prerequisites_logical_expression": "(courses_taken['01040002'])",
+        "equivalents": [
+            "01040290",
+            "00440114",
+            "00940346",
+            "01040290",
+            "02340293"
+        ],
+        "weight": 2.5,
+        "rating": 4,
+        "course_average": 77.11111111111111,
+        "moed_a": "2026-02-02",
+        "moed_b": "2026-03-08"
+    },
+    "01040294": {
+        "name": "מבוא לאנליזה נומרית",
+        "id": "01040294",
+        "points": 5.0,
+        "prerequisites_logical_expression": "(courses_taken['01040281'] | courses_taken['01040032'])",
+        "equivalents": [
+            "00340033",
+            "00340056",
+            "00840135",
+            "00850135",
+            "01040283",
+            "02340107",
+            "02340125"
+        ],
+        "weight": 2.5,
+        "rating": 5,
+        "course_average": 84.0,
+        "moed_a": "2026-02-15",
+        "moed_b": "2026-03-15"
+    },
+    "01150204": {
+        "name": "פיסיקה קוונטית 2",
+        "id": "01150204",
+        "points": 5.0,
+        "prerequisites_logical_expression": "(courses_taken['01150203'])",
+        "equivalents": [
+            "01140204",
+            "00460052",
+            "00490052"
+        ],
+        "weight": 3.5,
+        "rating": 4,
+        "course_average": 81.0909090909091,
+        "moed_a": "2026-02-16",
+        "moed_b": "2026-03-12"
+    },
+    "01160217": {
+        "name": "פיסיקה של מצב מוצק",
+        "id": "01160217",
+        "points": 3.5,
+        "prerequisites_logical_expression": "(courses_taken['01150203'] & courses_taken['01140036'])",
+        "equivalents": [
+            "00440124",
+            "00440129",
+            "00460129",
+            "00460224",
+            "01140217",
+            "03140150"
+        ],
+        "weight": 3.5,
+        "rating": 4,
+        "course_average": 79.4,
+        "moed_a": "2026-02-04",
+        "moed_b": "2026-03-05"
+    },
+    "01160354": {
+        "name": "אסטרופיסיקה וקוסמולוגיה",
+        "id": "01160354",
+        "points": 3.5,
+        "prerequisites_logical_expression": "(courses_taken['01140036'] & courses_taken['01150203'])",
+        "equivalents": [
+            "01160130"
+        ],
+        "weight": 3.5,
+        "rating": 3,
+        "course_average": 81.42857142857143,
+        "moed_a": "2026-02-23",
+        "moed_b": "2026-03-22"
+    },
+    "01240400": {
+        "name": "כימיה קוונטית 1",
+        "id": "01240400",
+        "points": 5.0,
+        "prerequisites_logical_expression": "((courses_taken['01240118'] & courses_taken['01240117'] & courses_taken['01040004'] & courses_taken['01140052'] & courses_taken['01040131']) | (courses_taken['01040131'] & courses_taken['01240118'] & courses_taken['01240117'] & courses_taken['01140078'] & courses_taken['01040004']) | (courses_taken['01040004'] & courses_taken['01240116'] & courses_taken['01240115'] & courses_taken['01040131'] & courses_taken['01140052']) | (courses_taken['01240120'] & courses_taken['01040004'] & courses_taken['01040131'] & courses_taken['01140052']) | (courses_taken['01140078'] & courses_taken['01240120'] & courses_taken['01040131'] & courses_taken['01040004']))",
+        "equivalents": [
+            "01240405",
+            "01240406",
+            "01240408",
+            "01250000",
+            "00460052",
+            "00490052"
+        ],
+        "weight": 4,
+        "rating": 3,
+        "course_average": 80.1,
+        "moed_a": "2026-02-10",
+        "moed_b": "2026-03-09"
+    },
+    "01240503": {
+        "name": "כימיה פיסיקלית 1ב`",
+        "id": "01240503",
+        "points": 2.5,
+        "prerequisites_logical_expression": "((courses_taken['01040004'] & courses_taken['01040003'] & courses_taken['01240120']) | (courses_taken['01240114'] & courses_taken['01040004'] & courses_taken['01040003']) | (courses_taken['01040004'] & courses_taken['01040003'] & courses_taken['01250001']) | (courses_taken['01250011'] & courses_taken['01040004'] & courses_taken['01040003']))",
+        "equivalents": [
+            "01240415",
+            "01240411",
+            "01240507",
+            "01240510"
+        ],
+        "weight": 2.5,
+        "rating": 4,
+        "course_average": 78.63636363636364,
+        "moed_a": "2026-02-02",
+        "moed_b": "2026-03-12"
+    },
+    "01340019": {
+        "name": "מבוא לביוכימיה ואנזימולוגיה",
+        "id": "01340019",
+        "points": 2.5,
+        "prerequisites_logical_expression": "((courses_taken['01240114'] & courses_taken['01340058']) | (courses_taken['01340127'] & courses_taken['01240114']) | (courses_taken['01250011'] & courses_taken['01340058']) | (courses_taken['01340058'] & courses_taken['01240120']))",
+        "equivalents": [
+            "01340003",
+            "01340038",
+            "01340044",
+            "01340048",
+            "01340042",
+            "01340067"
+        ],
+        "weight": 2.5,
+        "rating": 4,
+        "course_average": 74.86363636363636,
+        "moed_a": "2026-02-16",
+        "moed_b": "2026-03-19"
+    },
+    "01340082": {
+        "name": "ביולוגיה מולקולרית",
+        "id": "01340082",
+        "points": 2.5,
+        "prerequisites_logical_expression": "((courses_taken['01340020'] & courses_taken['01250801'] & courses_taken['01340019']) | (courses_taken['01340020'] & courses_taken['01340067'] & courses_taken['01240708']) | (courses_taken['01340067'] & courses_taken['01340020'] & courses_taken['01250801']) | (courses_taken['01340020'] & courses_taken['01340019'] & courses_taken['01240708']))",
+        "equivalents": [
+            "02740010",
+            "00640523",
+            "02740243"
+        ],
+        "weight": 3,
+        "rating": 5,
+        "course_average": 81.2,
+        "moed_a": "2026-02-13",
+        "moed_b": "2026-03-12"
+    },
+    "01340113": {
+        "name": "מסלולים מטבולים",
+        "id": "01340113",
+        "points": 3.5,
+        "prerequisites_logical_expression": "((courses_taken['01250801'] & courses_taken['01340019']) | (courses_taken['01250801'] & courses_taken['01340067']) | (courses_taken['01240708'] & courses_taken['01340019']) | (courses_taken['01340067'] & courses_taken['01240708']))",
+        "equivalents": [
+            "01340044",
+            "01340048",
+            "01340028",
+            "02740241",
+            "03360004"
+        ],
+        "weight": 3,
+        "rating": 4,
+        "course_average": 78.8,
+        "moed_a": "2026-02-02",
+        "moed_b": "2026-03-04"
+    },
+    "01340142": {
+        "name": "מעבדה בגנטיקה מולקולרית",
+        "id": "01340142",
+        "points": 2.5,
+        "prerequisites_logical_expression": "(courses_taken['01340020'])",
+        "equivalents": [
+            "01340120"
+        ],
+        "weight": 3.5,
+        "rating": 3,
+        "course_average": 86.9,
+        "moed_a": null,
+        "moed_b": null
+    }
+}

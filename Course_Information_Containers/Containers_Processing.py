@@ -1,8 +1,11 @@
+import json
 from abc import abstractmethod
 from copy import deepcopy
 
+from Course_Information_Containers import Courses_Containers
 from Course_Information_Containers.Courses_Containers import courses_containers
 
+JSON_FILE_PATH = "../CoursesData/courses_data_json.json"
 COURSE_ID_LENGTH = 8
 
 
@@ -114,6 +117,9 @@ class DecisionNode:
     def type(self) -> str: ...
 
     @abstractmethod
+    def repr_as_logic_with_variable(self, dict_name_courses_taken) -> str: ...
+
+    @abstractmethod
     def __str__(self) -> str: ...
 
     def __repr__(self) -> str:
@@ -127,6 +133,11 @@ class AndNode(DecisionNode):
     def type(self) -> str:
         return "and"
 
+    def repr_as_logic_with_variable(self, dict_name_courses_taken) -> str:
+        return "(" + " & ".join([
+            f"{expression.repr_as_logic_with_variable(dict_name_courses_taken) if isinstance(expression, DecisionNode) else f"{dict_name_courses_taken}['{expression}']"}"
+            for expression in self.data]) + ")"
+
     def __str__(self) -> str:
         return "(" + " & ".join(map(str, self.data)) + ")"
 
@@ -137,6 +148,11 @@ class OrNode(DecisionNode):
 
     def type(self) -> str:
         return "or"
+
+    def repr_as_logic_with_variable(self, dict_name_courses_taken) -> str:
+        return "(" + " | ".join([
+            f"{expression.repr_as_logic_with_variable(dict_name_courses_taken) if isinstance(expression, DecisionNode) else f"{dict_name_courses_taken}['{expression}']"}"
+            for expression in self.data]) + ")"
 
     def __str__(self) -> str:
         return "(" + " | ".join(map(str, self.data)) + ")"
@@ -182,7 +198,7 @@ class PrereqHTMLParser(HTMLParser):
                         pass
 
 
-def parse_prereqs_from_html(html: str) -> List:
+def parse_prereqs_from_html(html: str) -> OrNode:
     parser = PrereqHTMLParser()
     parser.feed(html)
     tokens = parser.tokens
@@ -234,15 +250,13 @@ def parse_prereqs_from_html(html: str) -> List:
 
     parsed = parse_or()
 
-    result = []
-
-    def collect(node):
+    def collect(node) -> OrNode:
         if isinstance(node, str):
-            result.append(OrNode([node]))
+            return OrNode([node])
         else:
-            result.append(node)
+            return node
 
-    collect(parsed)
+    result = collect(parsed)
     return result
 
 
@@ -267,13 +281,23 @@ def id_name_to_tuple(id_name: str) -> (str, str):
     return name, id
 
 
-def get_course_prerequisites(info_container) -> list:
-    prerequisites: List
+def get_course_points(info_container: str) -> float:
+    key_word_points = "<br>נקודות: "
+    idx = info_container.find(key_word_points)
+    assert idx != -1
+    trim = info_container[idx + len(key_word_points):]
+    points_str = trim[:trim.find('<')]
+    result = float(points_str)
+    return result
+
+
+def get_course_prerequisites(info_container) -> OrNode:
+    prerequisites: OrNode
 
     # getting the index of the start of the "<span>" info_container that has the prerequisites
     idx = info_container.find("<span>מקצועות קדם: ")
     if idx == -1:
-        return []
+        return OrNode(["No Prerequisites"])
     prerequisites_container = get_container_string_from_text(info_container[idx:], "<span", "</span>")
 
     prerequisites = parse_prereqs_from_html(prerequisites_container)
@@ -282,24 +306,25 @@ def get_course_prerequisites(info_container) -> list:
 
 
 def get_course_equivalents(info_container: str) -> list:
-    result = get_included_courses(info_container)
-    result.append(get_courses_that_include_this_course(info_container))
+    result = (
+        get_included_courses(info_container))
+    result.extend(
+        get_courses_that_include_this_course(info_container))
+    result.extend(
+        get_courses_from_simple_list_in_container(info_container, "<span>מקצועות ללא זיכוי נוסף: "))
     return result
 
 
 def get_included_courses(info_container: str) -> list:
-    result = get_courses_from_simple_list_in_container(info_container, "<span>מקצועות ללא זיכוי נוסף (מוכלים): ")
-    return result if result is not None else []
+    return get_courses_from_simple_list_in_container(info_container, "<span>מקצועות ללא זיכוי נוסף (מוכלים): ")
 
 
 def get_courses_that_include_this_course(info_container: str) -> list:
-    result = get_courses_from_simple_list_in_container(info_container, "<span>מקצועות ללא זיכוי נוסף: ")
-    return result if result is not None else []
+    return get_courses_from_simple_list_in_container(info_container, "<span>מקצועות ללא זיכוי נוסף (מכילים): ")
 
 
 def get_course_parallels(info_container: str) -> list:
-    result = get_courses_from_simple_list_in_container(info_container, "<span>מקצועות צמודים: ")
-    return result if result is not None else []
+    return get_courses_from_simple_list_in_container(info_container, "<span>מקצועות צמודים: ")
 
 
 def get_courses_from_simple_list_in_container(info_container: str, list_starting_at: str) -> list:
@@ -310,7 +335,10 @@ def get_courses_from_simple_list_in_container(info_container: str, list_starting
     list_container = get_container_string_from_text(info_container[idx:], "<span", "</span>")
     parser = PrereqHTMLParser()
     parser.feed(list_container)
-    return parser.tokens
+    if parser.tokens is None: return []
+
+    result = [token for token in parser.tokens if token not in ['(', ')']]
+    return result
 
 
 def get_course_weight(feedback_container: str) -> float:
@@ -329,7 +357,7 @@ def get_course_rating(feedback_container: str) -> float:
 
 def get_course_general_feedback(feedback_container: str, feedback_type: str, full_star_class_id: str,
                                 half_star_class_id: str) -> float:
-    if feedback_container=="":
+    if feedback_container == "":
         return -1
     feedback = 0
     idx = feedback_container.find(feedback_type) + 3
@@ -337,7 +365,7 @@ def get_course_general_feedback(feedback_container: str, feedback_type: str, ful
     while idx != -1:
         idx = general_feedback_container.find(full_star_class_id)
         feedback += 1
-        general_feedback_container = general_feedback_container[idx+len(full_star_class_id):]
+        general_feedback_container = general_feedback_container[idx + len(full_star_class_id):]
     feedback -= 1
 
     idx = general_feedback_container.find(half_star_class_id)
@@ -348,18 +376,57 @@ def get_course_general_feedback(feedback_container: str, feedback_type: str, ful
 
 def test_all(info_container="", feedback_container="") -> None:
     print(*get_course_name_and_id_from_container(info_container))
+    print(get_course_points(info_container))
     print(f"prerequisites: {get_course_prerequisites(info_container)}")
+    print(f"prerequisites: {get_course_prerequisites(info_container).repr_as_logic_with_variable("courses_taken")}")
     print(f"equivalents: {get_course_equivalents(info_container)}")
     print(f"weight: {get_course_weight(feedback_container)}")
     print(f"rating: {get_course_rating(feedback_container)}")
 
 
-
 if __name__ == '__main__':
+    courses_grades = Courses_Containers.courses_grades
+    course_exams_dict = Courses_Containers.course_exams_dict
+
     containers = [(info, feedback) for info, feedback in courses_containers]
 
     for container in containers:
         print("\n-----------------------------------------------")
         test_all(*container)
         print("-----------------------------------------------\n")
+
+    dict_results_organized = {}
+
+    for container in containers:
+        info = container[0]
+        feedback = container[1]
+
+        name, ID = get_course_name_and_id_from_container(info_container=info)
+        points = get_course_points(info_container=info)
+        prerequisites = get_course_prerequisites(info_container=info)
+        prerequisites_logical_expression = prerequisites.repr_as_logic_with_variable(
+            dict_name_courses_taken="courses_taken")
+        equivalents = get_course_equivalents(info_container=info)
+        weight = get_course_weight(feedback)
+        rating = get_course_rating(feedback)
+        course_average = courses_grades[ID] if ID in courses_grades else None
+
+        exams = course_exams_dict[ID] if ID in course_exams_dict.keys() else [None, None]
+        moed_a = exams[0]
+        moed_b = exams[1]
+
+        dict_results_organized[ID] = {
+            "name": name,
+            "id": ID,
+            "points": points,
+            "prerequisites_logical_expression": prerequisites_logical_expression,
+            "equivalents": equivalents,
+            "weight": weight,
+            "rating": rating,
+            "course_average": course_average,
+            "moed_a": moed_a,
+            "moed_b": moed_b
+        }
+    with open(JSON_FILE_PATH, "w", encoding="utf-8") as f:
+        json.dump(dict_results_organized, f, ensure_ascii=False, indent=4)
 

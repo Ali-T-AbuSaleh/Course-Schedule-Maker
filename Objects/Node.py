@@ -1,8 +1,11 @@
 import math
+from copy import deepcopy
+
 from Objects.Courses import evaluate_exam_period_average, get_exam_differences, evaluate_diff_thresholds2, Course, \
     priority_wanted_courses
 
 wanted_points = 16
+
 
 class Node:
     def __init__(self, courses: list):
@@ -50,6 +53,30 @@ class Node:
 
         self.evaluation = final_score
         return final_score
+
+    def neighbors(self, relevant_courses_dict: dict) -> list:
+        neighbors = []
+
+        for course in self.courses:
+            new_courses = deepcopy(self.courses)
+            new_courses.remove(course)
+            neighbor = Node(new_courses)
+            neighbors.append(neighbor)
+
+        if self.total_points >= 23:  # no need to try and get more courses because that is too much
+            return neighbors
+
+        remaining_courses = deepcopy(relevant_courses_dict)
+        for course in self.courses:
+            remaining_courses.pop(course.id, None)
+
+        for course in remaining_courses.values():
+            new_courses = deepcopy(self.courses)
+            new_courses.append(course)
+            neighbor = Node(new_courses)
+            neighbors.append(neighbor)
+
+        return neighbors
 
     def __str__(self):
         self.courses.sort(key=sort_based_on_moed_a)

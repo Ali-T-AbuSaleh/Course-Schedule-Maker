@@ -64,19 +64,17 @@ def simulated_annealing(start: Node, T, convergence_factor, epsilon=10 ** -11) -
         if deltaE > 0:
             curr = new
             curr_val = new_val
-            if len(min_heap) >= number_of_returned_results:
-                if curr_val > min_heap.get_min()[0]:
-                    min_heap.pop()
             min_heap.push(curr_val, curr)
+            if len(min_heap) > number_of_returned_results:
+                min_heap.pop()
         else:
             probability = -math.exp(-math.fabs(deltaE) / T)
             if random.random() < probability:
                 curr = new
                 curr_val = new_val
-                if len(min_heap) >= number_of_returned_results:
-                    if curr_val > min_heap.get_min()[0]:
-                        min_heap.pop()
                 min_heap.push(curr_val, curr)
+                if len(min_heap) > number_of_returned_results:
+                    min_heap.pop()
 
         T = convergence_factor * T
 

@@ -1,0 +1,21 @@
+1. Preferred Schedule Stress level (1-5):
+    Allows the user to specify a stress level for the schedule DURING the semester.
+    e.g.: if they specify 2/5, then the program tries to favour schedules with such average.
+
+    Implementation idea:
+     use e^(-(x^2)) to make the heuristics peak at the specified stress,
+     similar to wanted_points.
+
+2. Specify how far back semesters to take into account for grade averages:
+    Allows the user to specify the number of semesters back that they want to take
+     into account regarding calculating the courses averages – which play a role for
+     calculating the heuristics, and presenting the results.
+    This can be useful when the course underwent a big change is a specific year, or
+    changed the main lecturer...
+    Note: this can be done for each course separately or for all the courses at once.
+
+    Implementation idea:
+     override the variable SEMESTERS_TO_TAKE_INTO_ACCOUNT, and save the whole
+     data for each course not just the average, to be able to customize like that.
+
+

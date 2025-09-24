@@ -275,7 +275,7 @@ def main():
                 course_average = None
                 if course_histograms_wrapper_element is not None:
                     histograms_element = course_histograms_wrapper_element.find_element(By.TAG_NAME, "select")
-                    YEARS_TO_TAKE_INTO_ACCOUNT = 7
+                    SEMESTERS_TO_TAKE_INTO_ACCOUNT = 7
                     histogram_per_year_elements = histograms_element.find_elements(By.TAG_NAME, "option")
 
                     def take_average_from_histograms_options(histogram_options: list[WebElement]):
@@ -284,7 +284,7 @@ def main():
                         key_word_FINAL = "סופי "
                         i = 0
                         for option in histogram_options:
-                            if i >= YEARS_TO_TAKE_INTO_ACCOUNT:
+                            if i >= SEMESTERS_TO_TAKE_INTO_ACCOUNT:
                                 break
                             text = option.text
 

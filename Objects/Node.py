@@ -41,8 +41,9 @@ class Node:
 
         x = self.total_points
         x_displacement = x - wanted_points
-        squish_factor = 2.5
-        total_points_factor = 15 * math.exp(-x_displacement ** 2 / squish_factor)
+        stretch_factor = 2.5
+        amplitude = 15
+        total_points_factor = amplitude * math.exp(-(x_displacement ** 2) / stretch_factor)
 
         final_score = ((priority_bonus + exam_period_score) * total_points_factor
                        + project_num * project_punishment + goal_bonus * (self.total_points >= wanted_points))
@@ -62,7 +63,7 @@ class Node:
             result += f"{course}\n"
 
         result += "\n"
-        result += "Exam Days| Course ID| Points | MoedA date, MoedB date | Course Name\n"
+        result += "Exam Days| Course ID| Points | MoedA date   , MoedB date    | stress, rating |  AVG  | Course Name\n"
         for diff, course in self.exam_differences:
             if diff > 9:
                 result += f"    {diff}   | {course}\n"

@@ -7,23 +7,33 @@ priority_wanted_exams = {}
 
 
 class Course:
-    def __init__(self, name: str, id: str, points: int, moed_a: datetime, moed_b: datetime):
+    def __init__(self, name: str, id: str, points: int,
+                 prerequisites_logical_expression: str, equivalents: list[str],
+                 stress: float, rating: float, average: float, moed_a: datetime, moed_b: datetime):
         self.name = name
         self.id = id
         self.points = points
+        self.prerequisites_logical_expression = prerequisites_logical_expression
+        self.equivalents = equivalents
+        self.stress = stress
+        self.rating = rating
+        self.average = average
         self.moed_a = moed_a
         self.moed_b = moed_b
 
     def __str__(self):
         if self.moed_a is None:
-            exam_a = "----None----"
+            exam_a = "---None---"
         else:
             exam_a = datetime.date(self.moed_a)
         if self.moed_b is None:
-            exam_b = "----None----"
+            exam_b = "---None---"
         else:
             exam_b = datetime.date(self.moed_b)
-        return f'{self.id} | {int(self.points * 10) / 10}pts | Moed A: {exam_a}, Moed B: {exam_b} | {self.name}'
+        return (f'{self.id} | {int(self.points * 10) / 10}pts | A: {exam_a}, B: {exam_b} |'
+                f' {format(self.stress, '.1f') if self.stress != -1 else "-1 "} /5,'
+                f' {format(self.rating, '.1f') if self.rating != -1 else "-1 "} /5 |'
+                f' {format(self.average, '.2f') if self.average != None else "None "} | {self.name}')
 
     def __repr__(self):
         return str(self)
@@ -137,7 +147,7 @@ def get_exam_differences(courses: list) -> (list, list, int):
 
     A_differences = []
 
-    previous_exam_date = datetime(2026, 1, 31) #actually it is 2 Feb.
+    previous_exam_date = datetime(2026, 1, 31)  # actually it is 2 Feb.
     for exam in A_exams:
         if exam[0] is None: continue
         difference = (exam[0] - previous_exam_date).days

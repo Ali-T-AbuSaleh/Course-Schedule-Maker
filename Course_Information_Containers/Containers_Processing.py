@@ -135,7 +135,7 @@ class AndNode(DecisionNode):
 
     def repr_as_logic_with_variable(self, dict_name_courses_taken) -> str:
         return "(" + " & ".join([
-            f"{expression.repr_as_logic_with_variable(dict_name_courses_taken) if isinstance(expression, DecisionNode) else f"{dict_name_courses_taken}['{expression}']"}"
+            f"{expression.repr_as_logic_with_variable(dict_name_courses_taken) if isinstance(expression, DecisionNode) else f"{dict_name_courses_taken}.get('{expression}',False)"}"
             for expression in self.data]) + ")"
 
     def __str__(self) -> str:
@@ -151,7 +151,7 @@ class OrNode(DecisionNode):
 
     def repr_as_logic_with_variable(self, dict_name_courses_taken) -> str:
         return "(" + " | ".join([
-            f"{expression.repr_as_logic_with_variable(dict_name_courses_taken) if isinstance(expression, DecisionNode) else f"{dict_name_courses_taken}['{expression}']"}"
+            f"{expression.repr_as_logic_with_variable(dict_name_courses_taken) if isinstance(expression, DecisionNode) else f"{dict_name_courses_taken}.get('{expression}',False)"}"
             for expression in self.data]) + ")"
 
     def __str__(self) -> str:
@@ -405,11 +405,12 @@ if __name__ == '__main__':
         points = get_course_points(info_container=info)
         prerequisites = get_course_prerequisites(info_container=info)
         prerequisites_logical_expression = prerequisites.repr_as_logic_with_variable(
-            dict_name_courses_taken="courses_taken")
+            dict_name_courses_taken="completed_courses")
         equivalents = get_course_equivalents(info_container=info)
         weight = get_course_weight(feedback)
         rating = get_course_rating(feedback)
-        course_average = courses_grades[ID] if ID in courses_grades else None
+        course_average = courses_grades.get(ID, None)
+        course_average = round(course_average, 2) if course_average is not None else None
 
         exams = course_exams_dict[ID] if ID in course_exams_dict.keys() else [None, None]
         moed_a = exams[0]
@@ -421,7 +422,7 @@ if __name__ == '__main__':
             "points": points,
             "prerequisites_logical_expression": prerequisites_logical_expression,
             "equivalents": equivalents,
-            "weight": weight,
+            "stress": weight,
             "rating": rating,
             "course_average": course_average,
             "moed_a": moed_a,
@@ -429,4 +430,3 @@ if __name__ == '__main__':
         }
     with open(JSON_FILE_PATH, "w", encoding="utf-8") as f:
         json.dump(dict_results_organized, f, ensure_ascii=False, indent=4)
-

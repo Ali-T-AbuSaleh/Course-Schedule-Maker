@@ -390,7 +390,7 @@ def main():
 
                         # some courses may have only one exam (eg: project deadline) which may be signed as Moed B for convenience
                         if course_id not in course_exams_dict:
-                            course_exams_dict[course_id] = [None, ""]
+                            course_exams_dict[course_id] = [None, None]
 
                         course_exams_dict[course_id][1] = exam_date_ISO
                     return course_exams_dict

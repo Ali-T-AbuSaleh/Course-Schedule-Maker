@@ -34,6 +34,7 @@ def update_course_ids() -> list:
             line = line.strip('\n')
             id_exists, course_id = check_course_id_existence(line)
             if id_exists:
-                course_ids.append(course_id)
+                if id_exists not in course_ids:
+                    course_ids.append(course_id)
         # print(course_ids)
     return course_ids

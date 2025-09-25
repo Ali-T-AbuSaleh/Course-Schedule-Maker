@@ -18,4 +18,21 @@
      override the variable SEMESTERS_TO_TAKE_INTO_ACCOUNT, and save the whole
      data for each course not just the average, to be able to customize like that.
 
+3. Do 2, but automatically with no user input.
+    It may be tiresome for users to enter a customized value for each course,
+     and it might too generalizing to assume one value for all. So, automation
+     seems to be a fitting solution.
+    Make a function for each set of grades that finds when to stop going back
+     in semesters when calculating the average.
+
+    Implementation idea:
+     Use statistics to give a predict of where a "major change" happened in the
+      course or where grades have a dramatic shift... and there, this is the
+      custom value we get for each course.
+     An Idea for that might be bubble search, where we maintain a bubble of size 3 lets say,
+      and start from the latest semesters, take the first bubble of courses, and take their average,
+      then move the bubble down by one course, take the average, and so on...
+      continue doing that and then check where the most recent major jump happened.
+
+
 

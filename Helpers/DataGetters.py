@@ -5,6 +5,8 @@ from datetime import datetime
 from Helpers.ValidationFunctions import validate_1to5_digit, validate_course_id, validate_simple_course_list_input
 from Objects.Courses import Course
 
+SEMESTERS_BACK_TO_TAKE_INTO_ACCOUNT = 6
+
 
 def get_courses_dict(courses_data_json_path: str) -> dict[str, Course]:
     result_dict = {}
@@ -24,9 +26,15 @@ def get_courses_dict(courses_data_json_path: str) -> dict[str, Course]:
         equivalents = dict_data["equivalents"]
         stress = dict_data["stress"]
         rating = dict_data["rating"]
-        average = dict_data["course_average"]
+        grades = dict_data["course_grades"]
         moed_a = dict_data["moed_a"]
         moed_b = dict_data["moed_b"]
+
+        #TODO: modify these 2 lines and change them with the customized value of
+        #       SEMESTERS_BACK_TO_TAKE_INTO_ACCOUNT for each course.
+        if grades is not None:
+            if len(grades) > SEMESTERS_BACK_TO_TAKE_INTO_ACCOUNT:
+                grades = dict(list(grades.items())[:SEMESTERS_BACK_TO_TAKE_INTO_ACCOUNT])
 
         if moed_a == "None" or moed_a == "":
             moed_a = None
@@ -37,7 +45,7 @@ def get_courses_dict(courses_data_json_path: str) -> dict[str, Course]:
         elif moed_b is not None:
             moed_b = datetime.fromisoformat(moed_b)
         course = Course(name, ID, points, prerequisites_logical_expression,
-                        equivalents, stress, rating, average, moed_a, moed_b)
+                        equivalents, stress, rating, grades, moed_a, moed_b)
         result_dict[course_id] = course
 
     return result_dict
@@ -108,6 +116,7 @@ def filter_courses(courses: dict, completed_courses_file_path: str, unwanted_cou
     filter_unwanted_courses()
 
     return courses
+
 
 def get_priorities_from_file_to_dict(file_path: str, priority_dict: dict, field_name: str) -> None:
     with open(file_path, 'r') as f:

@@ -2,10 +2,9 @@ import json
 from abc import abstractmethod
 from copy import deepcopy
 
-from Course_Information_Containers import Courses_Containers
-from Course_Information_Containers.Courses_Containers import courses_containers
+GET_FROM_JSON_FILE_PATH = "Courses_Containers_and_Data.json"
 
-JSON_FILE_PATH = "../CoursesData/courses_data_json.json"
+STORE_IN_JSON_FILE_PATH = "../CoursesData/courses_data_json.json"
 COURSE_ID_LENGTH = 8
 
 
@@ -60,53 +59,6 @@ def get_container_string_from_text(text: str, container_opening: str, container_
         added_idx += trim_start_idx
 
     raise ValueError("\nText doesnt have a closing for the container!\n\n")
-
-
-# def test_func(func, inputs: tuple, true_result, test_number):
-#     result = func(*inputs)
-#     if result != true_result:
-#         print(f"test {test_number} failed")
-#         result = fold_string(result, 150)
-#         print(result + '\n')
-#     else:
-#         print(f"test {test_number} passed")
-#
-#
-# def fold_string(string, max_length) -> str:
-#     if len(string) <= max_length:
-#         return string
-#     trim = str(string[:max_length])
-#     trim = trim[::-1]
-#     trim = trim[trim.find(' ') + 1:]
-#     trim = trim[::-1]
-#
-#     remaining = string[len(trim) + 1:]
-#
-#     return trim + '\n' + fold_string(remaining, max_length)
-#
-#
-# if __name__ == "__main__":
-#     true_container1 = container1 = '<span class="exam-info-left-arrow"></span>'
-#     true_container2 = (
-#         '<span class="exam-info-item exam-info-item-course-02360343" style="background-color: rgb(45, 134, 94);">'
-#         '<span class="content-absolute">03/02</span><span class="content-bold-hidden">03/02</span></span>')
-#     container2 = true_container2 + 'fcuk safjsdknvclamkd vclkjwadf'
-#     true_container4 = "<span>1<span>2<span>3</span></span></span>"
-#     container4 = true_container4 + "AAAAAAAAAAAAAAAAA"
-#     true_container5 = "<span>1<span>2<span>3</span><span>4</span></span></span>"
-#     container5 = true_container5 + "AAAAAAAAAAAAAAAAA"
-#     true_container3 = true_container1
-#     container3 = container1 + container2
-#
-#     test_func(get_container_string_from_text, (container1, 'span'), true_container1, test_number=1)
-#
-#     test_func(get_container_string_from_text, (container2, 'span'), true_container2, test_number=2)
-#
-#     test_func(get_container_string_from_text, (container3, 'span'), true_container3, test_number=3)
-#
-#     test_func(get_container_string_from_text, (container4, 'span'), true_container4, test_number=4)
-#
-#     test_func(get_container_string_from_text, (container5, 'span'), true_container5, test_number=5)
 
 
 class DecisionNode:
@@ -374,26 +326,15 @@ def get_course_general_feedback(feedback_container: str, feedback_type: str, ful
     return feedback
 
 
-def test_all(info_container="", feedback_container="") -> None:
-    print(*get_course_name_and_id_from_container(info_container))
-    print(get_course_points(info_container))
-    print(f"prerequisites: {get_course_prerequisites(info_container)}")
-    print(f"prerequisites: {get_course_prerequisites(info_container).repr_as_logic_with_variable("courses_taken")}")
-    print(f"equivalents: {get_course_equivalents(info_container)}")
-    print(f"weight: {get_course_weight(feedback_container)}")
-    print(f"rating: {get_course_rating(feedback_container)}")
-
-
 if __name__ == '__main__':
-    courses_grades = Courses_Containers.courses_grades
-    course_exams_dict = Courses_Containers.course_exams_dict
+    with open(GET_FROM_JSON_FILE_PATH, 'r', encoding='utf-8') as f:
+        data_dict = json.load(f)
+
+    courses_grades = data_dict["courses_grades"]
+    course_exams_dict = data_dict["course_exams_dict"]
+    courses_containers = data_dict["courses_containers"]
 
     containers = [(info, feedback) for info, feedback in courses_containers]
-
-    for container in containers:
-        print("\n-----------------------------------------------")
-        test_all(*container)
-        print("-----------------------------------------------\n")
 
     dict_results_organized = {}
 
@@ -409,8 +350,7 @@ if __name__ == '__main__':
         equivalents = get_course_equivalents(info_container=info)
         weight = get_course_weight(feedback)
         rating = get_course_rating(feedback)
-        course_average = courses_grades.get(ID, None)
-        course_average = round(course_average, 2) if course_average is not None else None
+        course_grades = courses_grades.get(ID, None)
 
         exams = course_exams_dict[ID] if ID in course_exams_dict.keys() else [None, None]
         moed_a = exams[0]
@@ -424,9 +364,9 @@ if __name__ == '__main__':
             "equivalents": equivalents,
             "stress": weight,
             "rating": rating,
-            "course_average": course_average,
+            "course_grades": course_grades,
             "moed_a": moed_a,
             "moed_b": moed_b
         }
-    with open(JSON_FILE_PATH, "w", encoding="utf-8") as f:
+    with open(STORE_IN_JSON_FILE_PATH, "w", encoding="utf-8") as f:
         json.dump(dict_results_organized, f, ensure_ascii=False, indent=4)

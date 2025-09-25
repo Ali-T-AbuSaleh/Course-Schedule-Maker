@@ -9,7 +9,7 @@ priority_wanted_exams = {}
 class Course:
     def __init__(self, name: str, id: str, points: int,
                  prerequisites_logical_expression: str, equivalents: list[str],
-                 stress: float, rating: float, average: float, moed_a: datetime, moed_b: datetime):
+                 stress: float, rating: float, grades: dict[str:int], moed_a: datetime, moed_b: datetime):
         self.name = name
         self.id = id
         self.points = points
@@ -17,9 +17,10 @@ class Course:
         self.equivalents = equivalents
         self.stress = stress
         self.rating = rating
-        self.average = average
+        self.grades = grades
         self.moed_a = moed_a
         self.moed_b = moed_b
+        self.average = sum(grades.values()) / len(grades) if grades is not None and len(grades) > 0 else None
 
     def __str__(self):
         if self.moed_a is None:

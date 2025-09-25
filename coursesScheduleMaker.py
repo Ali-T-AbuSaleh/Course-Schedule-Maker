@@ -93,6 +93,11 @@ if __name__ == '__main__':
     get_priorities_from_file_to_dict(wanted_exam_priority_txt, priority_wanted_exams,
                                      field_name="wanted_exam_priority.txt")
 
+
+    #TODO: make this a user input
+    SEMESTERS_BACK_TO_TAKE_INTO_ACCOUNT = 6
+
+
     courses_dict = get_courses_dict(COURSES_DATA_JSON_PATH)
     courses_dict = filter_courses(courses_dict, completed_courses_txt, unwanted_courses_txt)
 

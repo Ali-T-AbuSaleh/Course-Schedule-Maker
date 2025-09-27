@@ -2,7 +2,7 @@ import sys
 import json
 from datetime import datetime
 
-from Helpers.ValidationFunctions import validate_1to5_digit, validate_course_id, validate_simple_course_list_input
+from Helpers.ValidationFunctions import validate_1to10_digit, validate_course_id, validate_simple_course_list_input
 from Objects.Courses import Course
 
 SEMESTERS_BACK_TO_TAKE_INTO_ACCOUNT = 6
@@ -30,11 +30,9 @@ def get_courses_dict(courses_data_json_path: str) -> dict[str, Course]:
         moed_a = dict_data["moed_a"]
         moed_b = dict_data["moed_b"]
 
-        #TODO: modify these 2 lines and change them with the customized value of
+        #TODO: modify and add support for customized value of
         #       SEMESTERS_BACK_TO_TAKE_INTO_ACCOUNT for each course.
-        if grades is not None:
-            if len(grades) > SEMESTERS_BACK_TO_TAKE_INTO_ACCOUNT:
-                grades = dict(list(grades.items())[:SEMESTERS_BACK_TO_TAKE_INTO_ACCOUNT])
+
 
         if moed_a == "None" or moed_a == "":
             moed_a = None
@@ -130,7 +128,7 @@ def get_priorities_from_file_to_dict(file_path: str, priority_dict: dict, field_
             course_id = words[0]
             course_priority = words[1]
 
-            validate_1to5_digit(course_priority, field_name)
+            validate_1to10_digit(course_priority, field_name)
             validate_course_id(course_id, field_name)
 
             # otherwise, everything is valid

@@ -8,12 +8,7 @@ from Helpers.ValidationFunctions import validate_txt_file_path
 from Objects.Courses import priority_wanted_courses, priority_wanted_exams
 from Objects.Heap import MinHeap
 from Objects.Node import Node
-
-COURSES_DATA_JSON_PATH = "CoursesData/courses_data_json.json"
-ADDITIONAL_RUNS = 4
-starting_temperature = 10000
-convergence_factor = 0.95
-ε = 10 ** -11
+from config import ADDITIONAL_RUNS, starting_temperature, convergence_factor, ε, COURSES_DATA_JSON_PATH
 
 
 def simulated_annealing(start: Node, T, convergence_factor, epsilon=10 ** -9) -> MinHeap:
@@ -93,10 +88,8 @@ if __name__ == '__main__':
     get_priorities_from_file_to_dict(wanted_exam_priority_txt, priority_wanted_exams,
                                      field_name="wanted_exam_priority.txt")
 
-
-    #TODO: make this a user input
+    # TODO: make this a user input
     SEMESTERS_BACK_TO_TAKE_INTO_ACCOUNT = 6
-
 
     courses_dict = get_courses_dict(COURSES_DATA_JSON_PATH)
     courses_dict = filter_courses(courses_dict, completed_courses_txt, unwanted_courses_txt)

@@ -23,12 +23,12 @@ def validate_course_id(course_id: str, location_of_course_id: str) -> None:
             raise ValueError(bad_course_id)
 
 
-def validate_1to5_digit(digit: str, location_of_digit: str) -> None:
-    bad_digit = f"invalid priority in {location_of_digit}, it must be a digit from 1-5\n"
+def validate_1to10_digit(digit: str, location_of_digit: str) -> None:
+    bad_digit = f"invalid priority in {location_of_digit}, it must be a digit from 1-10\n"
     if not digit.isdigit():
         raise ValueError(bad_digit)
     course_priority = float(digit)
-    if course_priority > 5 or course_priority < 1:
+    if course_priority > 10 or course_priority < 1:
         raise ValueError(bad_digit)
 
 

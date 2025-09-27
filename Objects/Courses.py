@@ -1,6 +1,11 @@
 import math
 from datetime import datetime
 
+from pycparser.ply.yacc import default_lr
+
+from Objects.Mode import Mode
+from config import MODE
+
 MAX_COURSE_POINTS = 5
 priority_wanted_courses = {}
 priority_wanted_exams = {}
@@ -9,7 +14,8 @@ priority_wanted_exams = {}
 class Course:
     def __init__(self, name: str, id: str, points: int,
                  prerequisites_logical_expression: str, equivalents: list[str],
-                 stress: float, rating: float, grades: dict[str:int], moed_a: datetime, moed_b: datetime):
+                 stress: float, rating: float, grades: dict[str:int], moed_a: datetime, moed_b: datetime,
+                 SEMESTERS_BACK_TO_TAKE_INTO_ACCOUNT=6):
         self.name = name
         self.id = id
         self.points = points
@@ -20,7 +26,13 @@ class Course:
         self.grades = grades
         self.moed_a = moed_a
         self.moed_b = moed_b
-        self.average = sum(grades.values()) / len(grades) if grades is not None and len(grades) > 0 else None
+        self.SEMESTERS_BACK_TO_TAKE_INTO_ACCOUNT = min(SEMESTERS_BACK_TO_TAKE_INTO_ACCOUNT,
+                                                       len(grades) if grades is not None else 1)
+        self.average = sum(list(grades.values())[
+                           :self.SEMESTERS_BACK_TO_TAKE_INTO_ACCOUNT]) / self.SEMESTERS_BACK_TO_TAKE_INTO_ACCOUNT \
+            if grades is not None and len(grades) > 0 else None
+        if MODE is Mode.DEBUG:
+            self.evaluation = 0
 
     def __str__(self):
         if self.moed_a is None:
@@ -173,7 +185,10 @@ def evaluate_single_exam(studying_days: int, course: Course, prev_course_id: str
         if prev_course_id in priority_wanted_exams:
             exam_priority = priority_wanted_exams[prev_course_id] * exam_priority
 
-    return (evaluation_strat(studying_days, multiplier) * course.points *
+    default_course_average = 50
+    course_average_factor = 100 / (course.average if course.average is not None else default_course_average)
+
+    return (evaluation_strat(studying_days, multiplier) * course.points * course_average_factor *
             exam_priority / MAX_COURSE_POINTS) * multiplier
 
 

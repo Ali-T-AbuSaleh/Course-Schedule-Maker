@@ -22,6 +22,7 @@ def simulated_annealing(start: Node, T, gamma, epsilon=10 ** -9) -> MinHeap:
     min_heap = MinHeap(number_of_returned_results)
     min_heap.push(curr_val, curr)
     pick_pool = []
+    prev = None
 
     while T > epsilon:
         if prev != curr:
@@ -55,7 +56,7 @@ def simulated_annealing(start: Node, T, gamma, epsilon=10 ** -9) -> MinHeap:
     return min_heap
 
 
-def steepest_ascent_hill_climbing(start: Node, WITH_SIDEWAY_STEPS=True, epsilon=10 ** -1) -> list[Node]:
+def steepest_ascent_hill_climbing(start: Node) -> list[Node]:
     curr = start
     curr.evaluate(priority_multiplier, goal_bonus, project_number_limit)
 
@@ -71,19 +72,15 @@ def steepest_ascent_hill_climbing(start: Node, WITH_SIDEWAY_STEPS=True, epsilon=
         neighbors = curr.get_neighbors(courses_dict)
         shuffle(neighbors)
         if len(neighbors) == 0: break
-        if WITH_SIDEWAY_STEPS:
-            max_neighbor = None
-            max_eval = float('-inf')
-        else:
-            max_neighbor = curr
-            max_eval = curr.evaluation
+        max_neighbor = curr
+        max_eval = curr.evaluation
 
         for neighbor in neighbors:
             neighbor.evaluate(priority_multiplier, goal_bonus, project_number_limit)
             if max_eval < neighbor.evaluation:
                 max_neighbor = neighbor
                 max_eval = neighbor.evaluation
-        if max_neighbor.evaluation <= curr.evaluation - epsilon * WITH_SIDEWAY_STEPS:
+        if max_neighbor.evaluation <= curr.evaluation:
             return results_queue
         push_result_pop_previous(max_neighbor)
         curr = max_neighbor
@@ -159,23 +156,21 @@ if __name__ == '__main__':
                                        get_neighbors_replace_course]
         sim_annealing_start = Node(start_courses)
         sim_annealing_start.operation_set = sim_annealing_operation_set
-        try:
-            main_result_heap = simulated_annealing(sim_annealing_start, starting_temperature, convergence_factor, ε)
-            result_heaps = [MinHeap(number_of_returned_results) for _ in range(ADDITIONAL_RUNS)]
-            for i in range(ADDITIONAL_RUNS):
-                result_heaps[i] = simulated_annealing(sim_annealing_start, starting_temperature, convergence_factor, ε)
+        main_result_heap = simulated_annealing(sim_annealing_start, starting_temperature, convergence_factor, ε)
+        result_heaps = [MinHeap(number_of_returned_results) for _ in range(ADDITIONAL_RUNS)]
+        for i in range(ADDITIONAL_RUNS):
+            result_heaps[i] = simulated_annealing(sim_annealing_start, starting_temperature, convergence_factor, ε)
 
-            # merging into main_result_heap
-            for i in range(ADDITIONAL_RUNS):
-                main_result_heap += result_heaps[i]
-        finally:
-            result_sorted = []
-            while len(main_result_heap) > 0:
-                result_sorted.append(main_result_heap.pop()[1])
+        # merging into main_result_heap
+        for i in range(ADDITIONAL_RUNS):
+            main_result_heap += result_heaps[i]
+        result_sorted = []
+        while len(main_result_heap) > 0:
+            result_sorted.append(main_result_heap.pop()[1])
 
-            result_sorted.reverse()
+        result_sorted.reverse()
 
-            print_results(result_sorted)
+        print_results(result_sorted)
 
     # –––––––––––––––––––––––––Steepest AHC RUNS–––––––––––––––––––––––––
     if strategy == Strategy.STEEPEST_AHC:
@@ -185,7 +180,7 @@ if __name__ == '__main__':
         steepest_AHC_start = Node(start_courses)
         steepest_AHC_start.operation_set = steepest_AHC_operation_set
 
-        result_sorted = steepest_ascent_hill_climbing(steepest_AHC_start, WITH_SIDEWAY_STEPS=False)
+        result_sorted = steepest_ascent_hill_climbing(steepest_AHC_start)
         result_sorted.reverse()
         print_results(result_sorted)
 

@@ -1,4 +1,4 @@
-from Objects.Mode import Mode
+from Helpers.Mode import Mode
 
 
 # change to Mode.USER when not debugging.
@@ -8,4 +8,4 @@ COURSES_DATA_JSON_PATH = "CoursesData/courses_data_json.json"
 ADDITIONAL_RUNS = 4
 starting_temperature = 10000
 convergence_factor = 0.95
-ε = 10 ** -9
+ε = 10 ** -20

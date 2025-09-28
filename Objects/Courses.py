@@ -1,9 +1,7 @@
 import math
 from datetime import datetime
 
-from pycparser.ply.yacc import default_lr
-
-from Objects.Mode import Mode
+from Helpers.Mode import Mode
 from config import MODE
 
 MAX_COURSE_POINTS = 5

@@ -1,4 +1,6 @@
 import heapq
+from copy import deepcopy
+
 
 class MinHeap:
     def __init__(self, max_size=float('inf')):
@@ -19,6 +21,9 @@ class MinHeap:
     def get_min(self) -> tuple:
         return self._heap[0]
 
+    def parse_to_list(self):
+        return deepcopy([val for key, val in self._heap])
+
     def __len__(self) -> int:
         return len(self._heap)
 
@@ -28,24 +33,17 @@ class MinHeap:
         return self
 
 
-class MaxHeap:
+class MaxHeap(MinHeap):
     def __init__(self, max_size=float('inf')):
-        self._max_size = max_size
-        self.min_heap = MinHeap(max_size)
+        super().__init__(max_size)
 
     def push(self, key, data):
-        self.min_heap.push(-key, data)
+        super().push(-key, data)
 
     def pop(self):
-        key, data = self.min_heap.pop()
+        key, data = super().pop()
         return -key, data
 
     def get_max(self):
-        key, data = self.min_heap.get_min()
+        key, data = super().get_min()
         return -key, data
-
-    def __len__(self):
-        return self.min_heap.__len__()
-
-    def __add__(self, other):
-        return self.min_heap + other.min_heap

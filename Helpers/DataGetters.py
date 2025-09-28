@@ -130,8 +130,16 @@ def get_priorities_from_file_to_dict(file_path: str, priority_dict: dict, field_
 
             validate_1to10_digit(course_priority, field_name)
             validate_course_id(course_id, field_name)
-
             # otherwise, everything is valid
+            course_id = course_id[:8]
             priority_dict[course_id] = float(course_priority)
 
             line = f.readline().strip('\n')
+
+def get_and_validate_boolean_str(boolean: str,name:str)->bool:
+    if boolean == '1' or boolean == 'true' or boolean == 'True':
+        return True
+    elif boolean == '0' or boolean == 'false' or boolean == 'False':
+        return False
+    else:
+        raise ValueError(f"invalid {name} value: it must be boolean")

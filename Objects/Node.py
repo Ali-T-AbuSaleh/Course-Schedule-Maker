@@ -5,14 +5,17 @@ from Course_Information_Containers.Courses_Containers_farewell import courses_co
 from Objects.Courses import evaluate_exam_period_average, get_exam_differences, evaluate_diff_thresholds2, Course, \
     priority_wanted_courses
 
-wanted_points = 16
+wanted_points_min = 16
+wanted_points_max = 18
+#wanted_points is the math domain [wanted_points_min,wanted_points_max] (with 0.5 increments)
+wanted_points = [wanted_points_min + i / 2 for i in range(int((wanted_points_max - wanted_points_min) * 2) + 1)]
 
 
 class Node:
     def __init__(self, courses: list[Course]):
         self.courses = courses
         self.total_points = sum([c.points for c in courses])
-        self.has_prioritized = {}
+        self._has_prioritized = {}
         #        (OS, Compilation, Complexity, ComputerStructure)
 
         # getting the actual values of has_prioritized,
@@ -20,48 +23,61 @@ class Node:
         prioritized_courses = priority_wanted_courses.keys()
         for course in self.courses:
             if course.id in prioritized_courses:
-                self.has_prioritized[course.id] = 1
+                self._has_prioritized[course.id] = 1
 
         self.evaluation = 0
-        self.exam_differences = []
+        self._exam_differences = []
+        self.neighbors = []
+        self.operation_set = []
 
     def is_goal(self) -> bool:
-        return self.total_points >= wanted_points
+        return self.total_points >= wanted_points_min
 
-        # getting the score/value/evaluation/heuristic of this node:
+    # getting the score/value/evaluation/heuristic of this node:
+    def evaluate(self, priority_multiplier: float, goal_bonus: float, project_number_limit: int) -> float:
+        """
+        :param priority_multiplier: an amplifier to the effect of prioritized courses on the evaluation.
+        :param goal_bonus: the bonus gotten by reaching the goal total course points.
+        :return: an evaluation score for this node – a heuristic.
+        """
 
-    def evaluate(self, priority_multiplier: float, goal_bonus: float) -> float:
-
-        project_punishment = -10
+        project_punishment = -150
 
         A_differences, B_differences, project_num = get_exam_differences(self.courses)
-        self.exam_differences = A_differences + B_differences
-
+        self._exam_differences = A_differences + B_differences
+        if project_number_limit < project_num:
+            project_num *= 10
         exam_period_score = evaluate_exam_period_average(
             A_differences, B_differences, evaluate_diff_thresholds2)
         if exam_period_score == float('-inf'): return float('-inf')
 
-        priority_bonus = sum([priority_wanted_courses[id] for id, val in self.has_prioritized.items() if val == 1])
+        priority_bonus = sum([priority_wanted_courses[id] for id, val in self._has_prioritized.items() if val == 1])
         priority_bonus *= priority_multiplier
 
         x = self.total_points
-        x_displacement = x - wanted_points
-        stretch_factor = 2.5
+        if x < wanted_points_min:
+            x_displacement = x - wanted_points_min
+        elif x > wanted_points_max:
+            x_displacement = x - wanted_points_max
+        else:
+            x_displacement = 0
+        stretch_factor = 5  # 2.5
         amplitude = 15
         total_points_factor = amplitude * math.exp(-(x_displacement ** 2) / stretch_factor)
 
         # stress > stress_pivot gives punishment, < stress_pivot gives reward, linear behaviour.
         stress_pivot = 2.5
-        stress_score_multiplier = 3
+        stress_score_multiplier = 7
         stress_score = sum([stress_pivot - c.stress for c in self.courses if c.stress > 0])
         stress_score *= stress_score_multiplier
         rating_pivot = 3
-        rating_score_multiplier = 1
+        rating_score_multiplier = 3
         rating_score = sum([c.rating - rating_pivot for c in self.courses if c.rating > 0])
         rating_score *= rating_score_multiplier
 
         bad_average_supremum = 75
         good_average_infimum = 85
+        super_good_infimum = 98
 
         def is_no_feedback_and_do_we_punish(c: Course) -> bool:
             if -1 not in [c.stress, c.rating]:
@@ -70,13 +86,13 @@ class Node:
                 return True
             if c.average < bad_average_supremum:
                 return True
-            if c.average > good_average_infimum:
+            if c.average > super_good_infimum:
                 return False
             if len(c.grades) >= 1.5 * c.SEMESTERS_BACK_TO_TAKE_INTO_ACCOUNT:
                 return False
             return True
 
-        punishment_per_no_feedback_factor = 5
+        punishment_per_no_feedback_factor = 50
         default_course_average = 50
         no_feedback_punishment = -sum(
             [punishment_per_no_feedback_factor * 100 / (
@@ -96,43 +112,34 @@ class Node:
                 c.average if c.average is not None else default_course_average)
              for c in self.courses if is_new_course(c)])
 
-        final_score = ((priority_bonus + exam_period_score +
+        final_score = ((priority_bonus / amplitude + exam_period_score +
                         total_feedback_score + new_courses_punishment) * total_points_factor
-                       + project_num * project_punishment + goal_bonus * (self.total_points >= wanted_points))
+                       + project_num * project_punishment + goal_bonus * self.is_goal())
 
-        self.evaluation = final_score
+        self.evaluation = final_score / 5
         return final_score
 
-    def neighbors(self, relevant_courses_dict: dict) -> list:
+    #
+
+    def get_neighbors(self, relevant_courses_dict: dict) -> list['Node']:
+        """
+        :param relevant_courses_dict: a dictionary containing the relevant courses, ID: CourseObject.
+        :return: neighbors of this node based on the operation set provided.
+        """
         neighbors = []
-
-        for course in self.courses:
-            new_courses = deepcopy(self.courses)
-            new_courses.remove(course)
-            neighbor = Node(new_courses)
-            neighbors.append(neighbor)
-
-        if self.total_points >= 23:  # no need to try and get more courses because that is too much
-            return neighbors
-
-        remaining_courses = deepcopy(relevant_courses_dict)
-        for course in self.courses:
-            remaining_courses.pop(course.id, None)
-
-        for course in remaining_courses.values():
-            new_courses = deepcopy(self.courses)
-            new_courses.append(course)
-            neighbor = Node(new_courses)
-            neighbors.append(neighbor)
-
+        for operation in self.operation_set:
+            neighbors.extend(operation(self, relevant_courses_dict))
+        self.neighbors = neighbors
         return neighbors
+
+    #
 
     def __str__(self):
         self.courses.sort(key=sort_based_on_moed_a)
 
         result = "—————————————————————————————————————————————————————————————\n"
         result += f"total points: {self.total_points}\n"
-        result += f"has prioritized: {self.has_prioritized}\n"
+        result += f"has prioritized: {self._has_prioritized}\n"
         result += f"evaluation: {self.evaluation}\n"
         result += "Courses:\n"
         for course in self.courses:
@@ -140,7 +147,7 @@ class Node:
 
         result += "\n"
         result += "Exam Days| Course ID| Points | MoedA date   , MoedB date    | stress, rating |  AVG  | Course Name\n"
-        for diff, course in self.exam_differences:
+        for diff, course in self._exam_differences:
             if diff > 9:
                 result += f"    {diff}   | {course}\n"
             else:
@@ -157,3 +164,82 @@ class Node:
 def sort_based_on_moed_a(course1: Course) -> (int, int, int):
     if course1.moed_a is None: return 0, 0, 0
     return course1.moed_a.year, course1.moed_a.month, course1.moed_a.day
+
+
+def get_neighbors_del_course(node: Node, trash_param) -> list[Node]:
+    """
+    :param node: the current node
+    :param trash_param: dummy param to simplify logic of where this func is used
+    :return: neighbors of node that are gotten by deleting a single course from node's course list.
+    """
+
+    neighbors = []
+
+    for course in node.courses:
+        new_courses = deepcopy(node.courses)
+        new_courses.remove(course)
+        neighbor = Node(new_courses)
+        neighbor.operation_set = node.operation_set
+        neighbors.append(neighbor)
+
+    return neighbors
+
+
+def get_neighbors_del_2_courses(node: Node, relevant_courses_dict: dict) -> list[Node]:
+    neighbors = []
+
+    allowed_wiggle_room = 2
+    if node.total_points < wanted_points + allowed_wiggle_room:  # no need to remove 2 courses because that is too much
+        return neighbors
+
+    neighbors_del = get_neighbors_del_course(node, relevant_courses_dict)
+    for neighbor in neighbors_del:
+        neighbors.extend(get_neighbors_del_course(neighbor, relevant_courses_dict))
+    return neighbors
+
+
+def get_neighbors_add_course(node: Node, relevant_courses_dict: dict) -> list[Node]:
+    """
+    :param node: the current node
+    :param relevant_courses_dict: a dictionary containing the relevant courses, ID: CourseObject.
+    :return: neighbors of node that are gotten by adding one course to node's course list.
+    """
+
+    neighbors = []
+
+    if node.total_points >= 23:  # no need to try and get more courses because that is too much
+        return neighbors
+
+    remaining_courses = deepcopy(relevant_courses_dict)
+    for course in node.courses:
+        for equivalent in course.equivalents:
+            remaining_courses.pop(equivalent, None)
+        remaining_courses.pop(course.id, None)
+
+    for course in remaining_courses.values():
+        new_courses = deepcopy(node.courses)
+        new_courses.append(course)
+        neighbor = Node(new_courses)
+        neighbor.operation_set = node.operation_set
+        neighbors.append(neighbor)
+
+    return neighbors
+
+
+def get_neighbors_replace_course(node: Node, relevant_courses_dict: dict) -> list[Node]:
+    """
+    :param node: the current node
+    :param relevant_courses_dict: a dictionary containing the relevant courses, ID: CourseObject.
+    :return: neighbors of node that are gotten by replacing one course in node's course list.
+    """
+
+    neighbors_del = get_neighbors_del_course(node, relevant_courses_dict)
+    neighbors = []
+    remaining_courses = deepcopy(relevant_courses_dict)
+    for course in node.courses:
+        remaining_courses.pop(course.id, None)
+
+    for neighbor in neighbors_del:
+        neighbors.extend(get_neighbors_add_course(neighbor, remaining_courses))
+    neighbors.extend(neighbors_del)
+    return neighbors

@@ -18,6 +18,7 @@
             "01040093",
             "01040195"
         ],
+        "parallels": [],
         "stress": 4.5,
         "rating": 4,
         "course_grades": {
@@ -72,6 +73,7 @@
             "01040066",
             "01040167"
         ],
+        "parallels": [],
         "stress": 4,
         "rating": 4,
         "course_grades": {
@@ -121,6 +123,7 @@
             "02340130",
             "02340221"
         ],
+        "parallels": [],
         "stress": 3,
         "rating": 3,
         "course_grades": {
@@ -173,6 +176,7 @@
             "02340144",
             "02360353"
         ],
+        "parallels": [],
         "stress": 2.5,
         "rating": 4,
         "course_grades": {
@@ -202,6 +206,7 @@
         "equivalents": [
             "03240012"
         ],
+        "parallels": [],
         "stress": 2.5,
         "rating": 4,
         "course_grades": {
@@ -260,6 +265,7 @@
             "01040094",
             "01040281"
         ],
+        "parallels": [],
         "stress": 4.5,
         "rating": 4,
         "course_grades": {
@@ -303,6 +309,7 @@
             "01140248",
             "01150248"
         ],
+        "parallels": [],
         "stress": 3.5,
         "rating": 4,
         "course_grades": {
@@ -352,6 +359,7 @@
             "02340121",
             "02340122"
         ],
+        "parallels": [],
         "stress": 4.5,
         "rating": 4,
         "course_grades": {
@@ -392,6 +400,7 @@
             "02340107",
             "02380125"
         ],
+        "parallels": [],
         "stress": 3,
         "rating": 4,
         "course_grades": {
@@ -430,6 +439,7 @@
             "02340144",
             "02340246"
         ],
+        "parallels": [],
         "stress": 3,
         "rating": 4,
         "course_grades": {
@@ -481,6 +491,12 @@
             "01040034",
             "01040222"
         ],
+        "parallels": [
+            "01040281",
+            "01040032",
+            "01040022",
+            "01040020"
+        ],
         "stress": 4,
         "rating": 3,
         "course_grades": {
@@ -519,6 +535,7 @@
             "01040172",
             "01040279"
         ],
+        "parallels": [],
         "stress": 2,
         "rating": 4,
         "course_grades": {
@@ -568,6 +585,7 @@
             "01040918",
             "02340268"
         ],
+        "parallels": [],
         "stress": 4.5,
         "rating": 4,
         "course_grades": {
@@ -612,6 +630,7 @@
             "02340252",
             "02340262"
         ],
+        "parallels": [],
         "stress": 3.5,
         "rating": 4,
         "course_grades": {
@@ -650,6 +669,7 @@
             "01060156",
             "02340293"
         ],
+        "parallels": [],
         "stress": 2.5,
         "rating": 4,
         "course_grades": {
@@ -679,6 +699,7 @@
             "00440264",
             "01040818"
         ],
+        "parallels": [],
         "stress": 3.5,
         "rating": 4,
         "course_grades": {
@@ -722,6 +743,7 @@
             "02340120",
             "02360364"
         ],
+        "parallels": [],
         "stress": 4.5,
         "rating": 3,
         "course_grades": {
@@ -765,6 +787,7 @@
             "01040291",
             "02340246"
         ],
+        "parallels": [],
         "stress": 2.5,
         "rating": 4,
         "course_grades": {
@@ -811,6 +834,7 @@
             "01040044",
             "01040295"
         ],
+        "parallels": [],
         "stress": 2.5,
         "rating": 4,
         "course_grades": {
@@ -847,6 +871,7 @@
             "01040038",
             "01040173"
         ],
+        "parallels": [],
         "stress": 3,
         "rating": 4,
         "course_grades": {
@@ -881,6 +906,7 @@
             "01040215",
             "01040221"
         ],
+        "parallels": [],
         "stress": 3,
         "rating": 4,
         "course_grades": {
@@ -913,6 +939,7 @@
         "equivalents": [
             "01040275"
         ],
+        "parallels": [],
         "stress": 4,
         "rating": 4,
         "course_grades": {
@@ -956,6 +983,7 @@
             "01040136",
             "01040213"
         ],
+        "parallels": [],
         "stress": 2.5,
         "rating": 3,
         "course_grades": {
@@ -998,6 +1026,7 @@
             "01040043",
             "01040044"
         ],
+        "parallels": [],
         "stress": 4,
         "rating": 3,
         "course_grades": {
@@ -1029,6 +1058,7 @@
             "02340267",
             "02370267"
         ],
+        "parallels": [],
         "stress": 2,
         "rating": 3,
         "course_grades": {
@@ -1063,6 +1093,7 @@
             "02140912",
             "02370343"
         ],
+        "parallels": [],
         "stress": 3,
         "rating": 4,
         "course_grades": {
@@ -1097,6 +1128,7 @@
             "00460266",
             "01060860"
         ],
+        "parallels": [],
         "stress": 4,
         "rating": 3,
         "course_grades": {
@@ -1138,6 +1170,7 @@
             "01140249",
             "01150249"
         ],
+        "parallels": [],
         "stress": 4,
         "rating": 4,
         "course_grades": {
@@ -1192,6 +1225,7 @@
             "01140249",
             "01150249"
         ],
+        "parallels": [],
         "stress": 3,
         "rating": 4,
         "course_grades": {
@@ -1242,6 +1276,7 @@
             "01140073",
             "01140053"
         ],
+        "parallels": [],
         "stress": 1.5,
         "rating": 5,
         "course_grades": {
@@ -1292,6 +1327,7 @@
             "01150203",
             "01140065"
         ],
+        "parallels": [],
         "stress": 3,
         "rating": 4,
         "course_grades": {
@@ -1328,6 +1364,7 @@
         "points": 4.0,
         "prerequisites_logical_expression": "((completed_courses.get('01140076',False) & completed_courses.get('01040135',False) & completed_courses.get('01040013',False)) | (completed_courses.get('01040013',False) & completed_courses.get('01140075',False) & completed_courses.get('01040135',False)) | (completed_courses.get('01040013',False) & completed_courses.get('01140076',False) & completed_courses.get('01040035',False)) | (completed_courses.get('01040035',False) & completed_courses.get('01140075',False) & completed_courses.get('01040013',False)) | (completed_courses.get('01040013',False) & completed_courses.get('01040136',False) & completed_courses.get('01140076',False)) | (completed_courses.get('01140075',False) & completed_courses.get('01040013',False) & completed_courses.get('01040136',False)) | (completed_courses.get('01140076',False) & completed_courses.get('01040281',False)) | (completed_courses.get('01040285',False) & completed_courses.get('01140076',False) & completed_courses.get('01040033',False) & completed_courses.get('01040032',False)) | (completed_courses.get('01040033',False) & completed_courses.get('01040032',False) & completed_courses.get('01040135',False) & completed_courses.get('01140076',False)))",
         "equivalents": [],
+        "parallels": [],
         "stress": 4,
         "rating": 4,
         "course_grades": {
@@ -1368,6 +1405,7 @@
             "01240118",
             "01240507"
         ],
+        "parallels": [],
         "stress": 3,
         "rating": 4,
         "course_grades": {
@@ -1411,6 +1449,7 @@
             "01240118",
             "01240507"
         ],
+        "parallels": [],
         "stress": 3,
         "rating": 4,
         "course_grades": {
@@ -1454,6 +1493,7 @@
             "01240507",
             "01240509"
         ],
+        "parallels": [],
         "stress": 4,
         "rating": 3,
         "course_grades": {
@@ -1484,6 +1524,7 @@
             "01340017",
             "01340127"
         ],
+        "parallels": [],
         "stress": 1.5,
         "rating": 4,
         "course_grades": {
@@ -1532,6 +1573,7 @@
             "02740165",
             "02740223"
         ],
+        "parallels": [],
         "stress": 2.5,
         "rating": 3,
         "course_grades": {
@@ -1576,6 +1618,7 @@
             "00940223",
             "02340218"
         ],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": null,
@@ -1588,6 +1631,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('No Prerequisites',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": {
@@ -1609,6 +1653,7 @@
         "points": 4.0,
         "prerequisites_logical_expression": "(completed_courses.get('02340325',False) | completed_courses.get('00460200',False) | completed_courses.get('00460345',False) | completed_courses.get('02360873',False) | completed_courses.get('02360327',False) | completed_courses.get('02360861',False) | completed_courses.get('02360860',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": {
@@ -1629,6 +1674,7 @@
         "points": 2.0,
         "prerequisites_logical_expression": "(completed_courses.get('02360363',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 3,
         "rating": 3,
         "course_grades": {
@@ -1643,6 +1689,7 @@
         "points": 2.0,
         "prerequisites_logical_expression": "(completed_courses.get('No Prerequisites',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 1,
         "rating": 5,
         "course_grades": {
@@ -1657,6 +1704,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('02360501',False) | completed_courses.get('02360756',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 2,
         "rating": 4,
         "course_grades": {
@@ -1672,6 +1720,7 @@
         "points": 2.0,
         "prerequisites_logical_expression": "(completed_courses.get('No Prerequisites',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 5,
         "rating": 3,
         "course_grades": null,
@@ -1684,6 +1733,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('00460267',False) & completed_courses.get('00440252',False) & completed_courses.get('02360267',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": null,
@@ -1699,6 +1749,7 @@
             "02360200",
             "02360327"
         ],
+        "parallels": [],
         "stress": 3.5,
         "rating": 3,
         "course_grades": {
@@ -1719,6 +1770,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('No Prerequisites',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": {
@@ -1737,6 +1789,7 @@
             "00460345",
             "02340325"
         ],
+        "parallels": [],
         "stress": 5,
         "rating": 3,
         "course_grades": {
@@ -1752,6 +1805,7 @@
         "points": 2.0,
         "prerequisites_logical_expression": "(completed_courses.get('02360703',False) | (completed_courses.get('02340311',False) & completed_courses.get('02340312',False)))",
         "equivalents": [],
+        "parallels": [],
         "stress": 4,
         "rating": 4,
         "course_grades": {
@@ -1773,6 +1827,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('02360703',False) | (completed_courses.get('02340312',False) & completed_courses.get('02340311',False)))",
         "equivalents": [],
+        "parallels": [],
         "stress": 5,
         "rating": 4,
         "course_grades": {
@@ -1796,6 +1851,7 @@
         "equivalents": [
             "02340322"
         ],
+        "parallels": [],
         "stress": 3,
         "rating": 3,
         "course_grades": {
@@ -1818,6 +1874,7 @@
         "equivalents": [
             "00970247"
         ],
+        "parallels": [],
         "stress": 1.5,
         "rating": 3,
         "course_grades": {
@@ -1845,6 +1902,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "((completed_courses.get('02340122',False) & completed_courses.get('02340262',False)) | (completed_courses.get('02340252',False) & completed_courses.get('02340124',False)) | (completed_courses.get('02340124',False) & completed_courses.get('00440252',False)))",
         "equivalents": [],
+        "parallels": [],
         "stress": 3.5,
         "rating": 3,
         "course_grades": {
@@ -1874,6 +1932,7 @@
         "equivalents": [
             "00440334"
         ],
+        "parallels": [],
         "stress": 2.5,
         "rating": 4,
         "course_grades": {
@@ -1903,6 +1962,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('02360334',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": {
@@ -1922,6 +1982,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('02340293',False) | completed_courses.get('02340292',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 2.5,
         "rating": 4,
         "course_grades": {
@@ -1943,6 +2004,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('02360350',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": {
@@ -1962,6 +2024,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('02340123',False) | completed_courses.get('00460209',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 3,
         "rating": 4,
         "course_grades": {
@@ -1995,6 +2058,7 @@
         "equivalents": [
             "00460001"
         ],
+        "parallels": [],
         "stress": 5,
         "rating": 3,
         "course_grades": {
@@ -2015,6 +2079,7 @@
             "00940240",
             "00940241"
         ],
+        "parallels": [],
         "stress": 3,
         "rating": 3,
         "course_grades": {
@@ -2046,6 +2111,7 @@
         "equivalents": [
             "02340303"
         ],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": null,
@@ -2058,6 +2124,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('02340123',False) | completed_courses.get('00460209',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 2.5,
         "rating": 2,
         "course_grades": {
@@ -2082,6 +2149,7 @@
         "equivalents": [
             "00970329"
         ],
+        "parallels": [],
         "stress": 4.5,
         "rating": 3,
         "course_grades": {
@@ -2099,6 +2167,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('01040134',False) & completed_courses.get('02340247',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 4.5,
         "rating": 4,
         "course_grades": {
@@ -2116,6 +2185,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('02340124',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 3.5,
         "rating": 4,
         "course_grades": {
@@ -2135,6 +2205,7 @@
         "equivalents": [
             "00960210"
         ],
+        "parallels": [],
         "stress": 3.5,
         "rating": 4,
         "course_grades": {
@@ -2164,6 +2235,7 @@
         "equivalents": [
             "02340304"
         ],
+        "parallels": [],
         "stress": 4,
         "rating": 3,
         "course_grades": {
@@ -2184,6 +2256,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('No Prerequisites',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": {
@@ -2205,6 +2278,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('No Prerequisites',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": {
@@ -2222,6 +2296,7 @@
         "points": 2.0,
         "prerequisites_logical_expression": "(completed_courses.get('02340247',False) & completed_courses.get('02360343',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 4,
         "rating": 4,
         "course_grades": {
@@ -2240,6 +2315,7 @@
             "02340523",
             "02340525"
         ],
+        "parallels": [],
         "stress": 2.5,
         "rating": 3,
         "course_grades": {
@@ -2262,6 +2338,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "((completed_courses.get('02360523',False) & completed_courses.get('02360522',False)) | (completed_courses.get('02340218',False) & completed_courses.get('01340058',False) & completed_courses.get('01340020',False)))",
         "equivalents": [],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": null,
@@ -2276,6 +2353,7 @@
         "equivalents": [
             "02360669"
         ],
+        "parallels": [],
         "stress": 3,
         "rating": 3,
         "course_grades": {
@@ -2294,6 +2372,7 @@
         "points": 2.0,
         "prerequisites_logical_expression": "(completed_courses.get('No Prerequisites',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": null,
@@ -2306,6 +2385,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('02360756',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": {
@@ -2320,6 +2400,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('02360703',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 4,
         "rating": 3,
         "course_grades": {
@@ -2341,6 +2422,7 @@
             "00450113",
             "00460271"
         ],
+        "parallels": [],
         "stress": 3.5,
         "rating": 4,
         "course_grades": {
@@ -2371,6 +2453,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('02340218',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 3,
         "rating": 4,
         "course_grades": {
@@ -2390,6 +2473,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('02360861',False) | completed_courses.get('02360927',False) | completed_courses.get('02360873',False) | completed_courses.get('02360860',False) | completed_courses.get('02360716',False) | completed_courses.get('02360373',False) | completed_courses.get('02360327',False) | completed_courses.get('02360501',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": {
@@ -2408,6 +2492,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('00460211',False) | completed_courses.get('02360781',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": {
@@ -2425,6 +2510,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('02360501',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": null,
@@ -2437,6 +2523,7 @@
         "points": 2.0,
         "prerequisites_logical_expression": "(completed_courses.get('02340247',False) & completed_courses.get('02340123',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 2,
         "rating": 5,
         "course_grades": {
@@ -2460,6 +2547,7 @@
             "00460211",
             "00970209"
         ],
+        "parallels": [],
         "stress": 4.5,
         "rating": 3,
         "course_grades": {
@@ -2484,6 +2572,7 @@
         "points": 2.0,
         "prerequisites_logical_expression": "(completed_courses.get('No Prerequisites',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 3,
         "rating": 3,
         "course_grades": {
@@ -2504,6 +2593,7 @@
         "equivalents": [
             "00480892"
         ],
+        "parallels": [],
         "stress": 2.5,
         "rating": 4,
         "course_grades": {
@@ -2520,6 +2610,7 @@
         "points": 2.0,
         "prerequisites_logical_expression": "(completed_courses.get('No Prerequisites',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 2.5,
         "rating": 4,
         "course_grades": {
@@ -2536,6 +2627,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('02340123',False) | completed_courses.get('00460209',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": {
@@ -2550,6 +2642,7 @@
         "points": 2.0,
         "prerequisites_logical_expression": "(completed_courses.get('No Prerequisites',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 1.5,
         "rating": 5,
         "course_grades": {
@@ -2567,6 +2660,7 @@
         "equivalents": [
             "00460200"
         ],
+        "parallels": [],
         "stress": 3.5,
         "rating": 4,
         "course_grades": {
@@ -2584,6 +2678,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "((completed_courses.get('02340247',False) & completed_courses.get('01040013',False)) | (completed_courses.get('01040013',False) & completed_courses.get('00440198',False)) | (completed_courses.get('02340247',False) & completed_courses.get('01040032',False)) | (completed_courses.get('01040032',False) & completed_courses.get('00440198',False)) | (completed_courses.get('01040281',False) & completed_courses.get('02340247',False)) | (completed_courses.get('00440198',False) & completed_courses.get('01040281',False)))",
         "equivalents": [],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": null,
@@ -2596,6 +2691,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('02360327',False) | completed_courses.get('02360873',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": -1,
         "rating": -1,
         "course_grades": null,
@@ -2608,6 +2704,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('02360501',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 3,
         "rating": 5,
         "course_grades": {
@@ -2626,6 +2723,7 @@
             "00460212",
             "00460213"
         ],
+        "parallels": [],
         "stress": 5,
         "rating": 2,
         "course_grades": {
@@ -2649,6 +2747,7 @@
             "01160031",
             "01270446"
         ],
+        "parallels": [],
         "stress": 2.5,
         "rating": 3,
         "course_grades": {
@@ -2673,6 +2772,7 @@
             "00440109",
             "00340060"
         ],
+        "parallels": [],
         "stress": 3.5,
         "rating": 4,
         "course_grades": {
@@ -2713,6 +2813,7 @@
             "01170018",
             "01180119"
         ],
+        "parallels": [],
         "stress": 3.5,
         "rating": 4,
         "course_grades": {
@@ -2742,6 +2843,7 @@
             "00440195",
             "00440130"
         ],
+        "parallels": [],
         "stress": 4,
         "rating": 4,
         "course_grades": {
@@ -2773,6 +2875,7 @@
             "00440142",
             "00440147"
         ],
+        "parallels": [],
         "stress": 4,
         "rating": 4,
         "course_grades": {
@@ -2802,6 +2905,7 @@
             "00440151",
             "00440160"
         ],
+        "parallels": [],
         "stress": 4.5,
         "rating": 4,
         "course_grades": {
@@ -2834,6 +2938,7 @@
         "points": 4.0,
         "prerequisites_logical_expression": "((completed_courses.get('00440102',False) & completed_courses.get('00440151',False)) | (completed_courses.get('00440160',False) & completed_courses.get('00440102',False)) | (completed_courses.get('00440102',False) & completed_courses.get('00440157',False)))",
         "equivalents": [],
+        "parallels": [],
         "stress": 2,
         "rating": 4,
         "course_grades": {
@@ -2870,6 +2975,7 @@
             "00440001",
             "00440173"
         ],
+        "parallels": [],
         "stress": 4,
         "rating": 5,
         "course_grades": {
@@ -2905,6 +3011,7 @@
             "00840733",
             "00860733"
         ],
+        "parallels": [],
         "stress": 3.5,
         "rating": 3,
         "course_grades": {
@@ -2940,6 +3047,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('00440202',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 3.5,
         "rating": 5,
         "course_grades": {
@@ -2963,6 +3071,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('00440202',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 3.5,
         "rating": 4,
         "course_grades": {
@@ -2990,6 +3099,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "(completed_courses.get('00440131',False) | completed_courses.get('00440130',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 1.5,
         "rating": 4,
         "course_grades": {
@@ -3023,6 +3133,7 @@
         "equivalents": [
             "00480880"
         ],
+        "parallels": [],
         "stress": 5,
         "rating": 3,
         "course_grades": {
@@ -3041,6 +3152,9 @@
         "points": 3.5,
         "prerequisites_logical_expression": "(completed_courses.get('No Prerequisites',False))",
         "equivalents": [],
+        "parallels": [
+            "09400224"
+        ],
         "stress": 2.5,
         "rating": 4,
         "course_grades": {
@@ -3069,6 +3183,7 @@
         "equivalents": [
             "00940390"
         ],
+        "parallels": [],
         "stress": 3,
         "rating": 4,
         "course_grades": {
@@ -3110,6 +3225,10 @@
             "01040213",
             "01040285"
         ],
+        "parallels": [
+            "09400313",
+            "09400312"
+        ],
         "stress": 1.5,
         "rating": 4,
         "course_grades": {
@@ -3140,6 +3259,7 @@
             "00940490",
             "03340023"
         ],
+        "parallels": [],
         "stress": 4,
         "rating": 4,
         "course_grades": {
@@ -3182,6 +3302,7 @@
             "00940593",
             "00940594"
         ],
+        "parallels": [],
         "stress": 1.5,
         "rating": 4,
         "course_grades": {
@@ -3224,6 +3345,7 @@
         "points": 3.5,
         "prerequisites_logical_expression": "((completed_courses.get('00940210',False) & completed_courses.get('00940224',False)) | (completed_courses.get('00940210',False) & completed_courses.get('00940226',False)) | (completed_courses.get('00940210',False) & completed_courses.get('02340247',False)))",
         "equivalents": [],
+        "parallels": [],
         "stress": 3,
         "rating": 3,
         "course_grades": {
@@ -3250,6 +3372,7 @@
             "02360766",
             "00350054"
         ],
+        "parallels": [],
         "stress": 3.5,
         "rating": 4,
         "course_grades": {
@@ -3280,6 +3403,7 @@
             "00940317",
             "01060173"
         ],
+        "parallels": [],
         "stress": 2,
         "rating": 4,
         "course_grades": {
@@ -3300,6 +3424,7 @@
         "points": 3.5,
         "prerequisites_logical_expression": "(completed_courses.get('01040281',False) | completed_courses.get('01040032',False))",
         "equivalents": [],
+        "parallels": [],
         "stress": 5,
         "rating": 4,
         "course_grades": {
@@ -3325,6 +3450,7 @@
             "01040172",
             "01040134"
         ],
+        "parallels": [],
         "stress": 3,
         "rating": 4,
         "course_grades": {
@@ -3348,6 +3474,7 @@
         "points": 3.0,
         "prerequisites_logical_expression": "((completed_courses.get('01040282',False) & completed_courses.get('01040285',False)) | (completed_courses.get('01040285',False) & completed_courses.get('01040013',False)) | (completed_courses.get('01040285',False) & completed_courses.get('01040033',False)) | (completed_courses.get('01040282',False) & completed_courses.get('01040135',False)) | (completed_courses.get('01040135',False) & completed_courses.get('01040013',False)) | (completed_courses.get('01040295',False) & completed_courses.get('01040285',False)) | (completed_courses.get('01040282',False) & completed_courses.get('01040035',False)) | (completed_courses.get('01040035',False) & completed_courses.get('01040013',False)) | (completed_courses.get('01040295',False) & completed_courses.get('01040135',False)))",
         "equivalents": [],
+        "parallels": [],
         "stress": 3,
         "rating": 3,
         "course_grades": {
@@ -3378,6 +3505,7 @@
         "equivalents": [
             "01040134"
         ],
+        "parallels": [],
         "stress": 2.5,
         "rating": 4,
         "course_grades": {
@@ -3413,6 +3541,7 @@
             "01040290",
             "02340293"
         ],
+        "parallels": [],
         "stress": 2.5,
         "rating": 4,
         "course_grades": {
@@ -3443,6 +3572,7 @@
             "02340107",
             "02340125"
         ],
+        "parallels": [],
         "stress": 2.5,
         "rating": 5,
         "course_grades": {
@@ -3463,6 +3593,7 @@
             "00460052",
             "00490052"
         ],
+        "parallels": [],
         "stress": 3.5,
         "rating": 4,
         "course_grades": {
@@ -3494,6 +3625,7 @@
             "01140217",
             "03140150"
         ],
+        "parallels": [],
         "stress": 3.5,
         "rating": 4,
         "course_grades": {
@@ -3519,6 +3651,7 @@
         "equivalents": [
             "01160130"
         ],
+        "parallels": [],
         "stress": 3.5,
         "rating": 3,
         "course_grades": {
@@ -3546,6 +3679,7 @@
             "00460052",
             "00490052"
         ],
+        "parallels": [],
         "stress": 4,
         "rating": 3,
         "course_grades": {
@@ -3574,6 +3708,7 @@
             "01240507",
             "01240510"
         ],
+        "parallels": [],
         "stress": 2.5,
         "rating": 4,
         "course_grades": {
@@ -3605,6 +3740,7 @@
             "01340042",
             "01340067"
         ],
+        "parallels": [],
         "stress": 2.5,
         "rating": 4,
         "course_grades": {
@@ -3644,6 +3780,7 @@
             "00640523",
             "02740243"
         ],
+        "parallels": [],
         "stress": 3,
         "rating": 5,
         "course_grades": {
@@ -3673,6 +3810,7 @@
             "02740241",
             "03360004"
         ],
+        "parallels": [],
         "stress": 3,
         "rating": 4,
         "course_grades": {
@@ -3698,6 +3836,7 @@
         "equivalents": [
             "01340120"
         ],
+        "parallels": [],
         "stress": 3.5,
         "rating": 3,
         "course_grades": {

@@ -24,15 +24,15 @@ def get_courses_dict(courses_data_json_path: str) -> dict[str, Course]:
         points = dict_data["points"]
         prerequisites_logical_expression = dict_data["prerequisites_logical_expression"]
         equivalents = dict_data["equivalents"]
+        parallels = dict_data["parallels"]
         stress = dict_data["stress"]
         rating = dict_data["rating"]
         grades = dict_data["course_grades"]
         moed_a = dict_data["moed_a"]
         moed_b = dict_data["moed_b"]
 
-        #TODO: modify and add support for customized value of
+        # TODO: modify and add support for customized value of
         #       SEMESTERS_BACK_TO_TAKE_INTO_ACCOUNT for each course.
-
 
         if moed_a == "None" or moed_a == "":
             moed_a = None
@@ -43,7 +43,7 @@ def get_courses_dict(courses_data_json_path: str) -> dict[str, Course]:
         elif moed_b is not None:
             moed_b = datetime.fromisoformat(moed_b)
         course = Course(name, ID, points, prerequisites_logical_expression,
-                        equivalents, stress, rating, grades, moed_a, moed_b)
+                        equivalents, parallels, stress, rating, grades, moed_a, moed_b)
         result_dict[course_id] = course
 
     return result_dict
@@ -136,7 +136,8 @@ def get_priorities_from_file_to_dict(file_path: str, priority_dict: dict, field_
 
             line = f.readline().strip('\n')
 
-def get_and_validate_boolean_str(boolean: str,name:str)->bool:
+
+def get_and_validate_boolean_str(boolean: str, name: str) -> bool:
     if boolean == '1' or boolean == 'true' or boolean == 'True':
         return True
     elif boolean == '0' or boolean == 'false' or boolean == 'False':

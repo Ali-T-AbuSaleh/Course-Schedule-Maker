@@ -348,6 +348,7 @@ if __name__ == '__main__':
         prerequisites_logical_expression = prerequisites.repr_as_logic_with_variable(
             dict_name_courses_taken="completed_courses")
         equivalents = get_course_equivalents(info_container=info)
+        parallels = get_course_parallels(info_container=info)
         weight = get_course_weight(feedback)
         rating = get_course_rating(feedback)
         course_grades = courses_grades.get(ID, None)
@@ -362,6 +363,7 @@ if __name__ == '__main__':
             "points": points,
             "prerequisites_logical_expression": prerequisites_logical_expression,
             "equivalents": equivalents,
+            "parallels": parallels,
             "stress": weight,
             "rating": rating,
             "course_grades": course_grades,

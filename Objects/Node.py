@@ -1,13 +1,12 @@
 import math
 from copy import deepcopy
 
-from Course_Information_Containers.Courses_Containers_farewell import courses_containers
 from Objects.Courses import evaluate_exam_period_average, get_exam_differences, evaluate_diff_thresholds2, Course, \
     priority_wanted_courses
 
 wanted_points_min = 16
 wanted_points_max = 18
-#wanted_points is the math domain [wanted_points_min,wanted_points_max] (with 0.5 increments)
+# wanted_points is the math domain [wanted_points_min,wanted_points_max] (with 0.5 increments)
 wanted_points = [wanted_points_min + i / 2 for i in range(int((wanted_points_max - wanted_points_min) * 2) + 1)]
 
 
@@ -38,6 +37,7 @@ class Node:
         """
         :param priority_multiplier: an amplifier to the effect of prioritized courses on the evaluation.
         :param goal_bonus: the bonus gotten by reaching the goal total course points.
+        :param project_number_limit: the limit to how many projects are allowed (preference) in the schedule.
         :return: an evaluation score for this node – a heuristic.
         """
 
@@ -51,7 +51,7 @@ class Node:
             A_differences, B_differences, evaluate_diff_thresholds2)
         if exam_period_score == float('-inf'): return float('-inf')
 
-        priority_bonus = sum([priority_wanted_courses[id] for id, val in self._has_prioritized.items() if val == 1])
+        priority_bonus = sum([priority_wanted_courses[ID] for ID, val in self._has_prioritized.items() if val == 1])
         priority_bonus *= priority_multiplier
 
         x = self.total_points
@@ -76,7 +76,7 @@ class Node:
         rating_score *= rating_score_multiplier
 
         bad_average_supremum = 75
-        good_average_infimum = 85
+        # good_average_infimum = 85
         super_good_infimum = 98
 
         def is_no_feedback_and_do_we_punish(c: Course) -> bool:
@@ -175,9 +175,18 @@ def get_neighbors_del_course(node: Node, trash_param) -> list[Node]:
 
     neighbors = []
 
+    node_courses_dict = {}
+    for c in node.courses:
+        node_courses_dict[c.id] = c
+
     for course in node.courses:
         new_courses = deepcopy(node.courses)
         new_courses.remove(course)
+        for c in node.courses:
+            # if the course we removed was a parallel to another course, remove the other course.
+            if course.id in c.parallels:
+                new_courses.remove(c)
+
         neighbor = Node(new_courses)
         neighbor.operation_set = node.operation_set
         neighbors.append(neighbor)
@@ -189,7 +198,7 @@ def get_neighbors_del_2_courses(node: Node, relevant_courses_dict: dict) -> list
     neighbors = []
 
     allowed_wiggle_room = 2
-    if node.total_points < wanted_points + allowed_wiggle_room:  # no need to remove 2 courses because that is too much
+    if node.total_points < wanted_points_max + allowed_wiggle_room:  # no need to remove 2 courses because that is too much
         return neighbors
 
     neighbors_del = get_neighbors_del_course(node, relevant_courses_dict)
@@ -219,6 +228,12 @@ def get_neighbors_add_course(node: Node, relevant_courses_dict: dict) -> list[No
     for course in remaining_courses.values():
         new_courses = deepcopy(node.courses)
         new_courses.append(course)
+        for parallel_id in course.parallels:
+            # if the parallel is cannot be taken, then this is an invalid schedule.
+            if parallel_id not in remaining_courses:
+                continue
+            # if it can be taken, we must take it.
+            new_courses.append(relevant_courses_dict[parallel_id])
         neighbor = Node(new_courses)
         neighbor.operation_set = node.operation_set
         neighbors.append(neighbor)

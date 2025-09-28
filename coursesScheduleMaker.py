@@ -8,10 +8,9 @@ from Helpers.DataGetters import get_priorities_from_file_to_dict, get_courses_di
 from Helpers.ValidationFunctions import validate_txt_file_path
 from Objects.Courses import priority_wanted_courses, priority_wanted_exams
 from Objects.Heap import MinHeap
-from Objects.Node import Node, get_neighbors_add_course, get_neighbors_del_course, get_neighbors_replace_course, \
-    get_neighbors_del_2_courses
+from Objects.Node import Node, get_neighbors_add_course, get_neighbors_del_course, get_neighbors_replace_course
 from Objects.Strategy import Strategy
-from config import ADDITIONAL_RUNS, starting_temperature, convergence_factor, ε, COURSES_DATA_JSON_PATH
+from config import ADDITIONAL_RUNS, starting_temperature, convergence_factor, epsilon, COURSES_DATA_JSON_PATH
 
 
 def simulated_annealing(start: Node, T, gamma, epsilon=10 ** -9) -> MinHeap:
@@ -156,10 +155,11 @@ if __name__ == '__main__':
                                        get_neighbors_replace_course]
         sim_annealing_start = Node(start_courses)
         sim_annealing_start.operation_set = sim_annealing_operation_set
-        main_result_heap = simulated_annealing(sim_annealing_start, starting_temperature, convergence_factor, ε)
+        main_result_heap = simulated_annealing(sim_annealing_start, starting_temperature, convergence_factor, epsilon)
         result_heaps = [MinHeap(number_of_returned_results) for _ in range(ADDITIONAL_RUNS)]
         for i in range(ADDITIONAL_RUNS):
-            result_heaps[i] = simulated_annealing(sim_annealing_start, starting_temperature, convergence_factor, ε)
+            result_heaps[i] = simulated_annealing(sim_annealing_start, starting_temperature, convergence_factor,
+                                                  epsilon)
 
         # merging into main_result_heap
         for i in range(ADDITIONAL_RUNS):
@@ -185,10 +185,15 @@ if __name__ == '__main__':
         print_results(result_sorted)
 
     # –––––––––––––––––––––––evaluating a given schedule–––––––––––––––––––––––
-    if strategy == Strategy.EVALUATE_GIVEN_SCHEDULE:
-        given_courses_ids = ["02340123", "02360343", "00970317", "02360833", "01140054"]
-        # given_courses_ids = ["00940412", "02340218", "02340129", "02340125","01140075"] #Anwaar courses
-        given_courses = [courses_dict[cid] for cid in given_courses_ids]
-        evaluation_node = Node(given_courses)
-        evaluation_node.evaluate(priority_multiplier, goal_bonus, project_number_limit)
-        print(evaluation_node)
+    # if strategy == Strategy.EVALUATE_GIVEN_SCHEDULE:
+    given_courses_ids = ["02340123", "02360343", "00970317", "02360833", "01140054"]
+    given_courses_ids = ["02360343",
+                         "01040122",
+                         "01140054",
+                         "02340123",
+                         "00970317"]
+    # given_courses_ids = ["00940412", "02340218", "02340129", "02340125","01140075"] #Anwaar courses
+    given_courses = [courses_dict[cid] for cid in given_courses_ids]
+    evaluation_node = Node(given_courses)
+    evaluation_node.evaluate(priority_multiplier, goal_bonus, project_number_limit)
+    print(evaluation_node)

@@ -11,7 +11,7 @@ priority_wanted_exams = {}
 
 class Course:
     def __init__(self, name: str, id: str, points: int,
-                 prerequisites_logical_expression: str, equivalents: list[str],
+                 prerequisites_logical_expression: str, equivalents: list[str], parallels: list[str],
                  stress: float, rating: float, grades: dict[str:int], moed_a: datetime, moed_b: datetime,
                  SEMESTERS_BACK_TO_TAKE_INTO_ACCOUNT=6):
         self.name = name
@@ -19,6 +19,7 @@ class Course:
         self.points = points
         self.prerequisites_logical_expression = prerequisites_logical_expression
         self.equivalents = equivalents
+        self.parallels= parallels
         self.stress = stress
         self.rating = rating
         self.grades = grades
@@ -69,7 +70,7 @@ class Course:
 
 
 def evaluate_diff_thresholds1(diff: int) -> float:
-    # if an exam only got 0-1 days then I want to punish it equaly because I cant take this exam
+    # if an exam only got 0-1 days then I want to punish it equally because I cant take this exam
     if diff < 2:
         mean = 0.5
 
@@ -83,7 +84,7 @@ def evaluate_diff_thresholds1(diff: int) -> float:
 
     # scaling the values down to ~1 so that when I raise them to the power,
     # they get more reward, while the small days above get punished more.
-    rescaled = diff * 0.1  # scalling down the values
+    rescaled = diff * 0.1  # scaling down the values
     bonus = 0.5 + 0.15
     mean = rescaled + bonus
 
@@ -125,10 +126,9 @@ def get_exam_differences(courses: list) -> (list, list, int):
     str_project_list = [
         "project",
         "Project",
-        "PRVYYQT",
-        "SMYNR",
         "פרויקט",
-        "נושאים"
+        "נושאים",
+        "סמינר"
     ]
 
     for (moed_a, c) in A_exams:

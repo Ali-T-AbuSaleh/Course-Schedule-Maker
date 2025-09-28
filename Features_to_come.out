@@ -34,5 +34,10 @@
       then move the bubble down by one course, take the average, and so on...
       continue doing that and then check where the most recent major jump happened.
 
+4. Use pointers for courses, s.t. every course has only one instance.
+    python does not support ptrs directly, but there are methods to simulate it,
+     and there is a library that gets C pointers: type "import ctypes", then you
+     can convert to pointer by doing: "ptr = ctypes.pointer(x)"
+
 
 

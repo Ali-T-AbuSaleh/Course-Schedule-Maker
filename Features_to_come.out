@@ -34,10 +34,17 @@
       then move the bubble down by one course, take the average, and so on...
       continue doing that and then check where the most recent major jump happened.
 
+
 4. Use pointers for courses, s.t. every course has only one instance.
     python does not support ptrs directly, but there are methods to simulate it,
      and there is a library that gets C pointers: type "import ctypes", then you
      can convert to pointer by doing: "ptr = ctypes.pointer(x)"
+
+
+5. Add modes to the program, where users can choose to evaluate their self made schedule.
+    add the flags "-c": means create schedule, "-e": means evaluate given schedule.
+    The user will be able to choose how to use the program, if they want to evaluate
+     their schedule, or want the program to make them one.
 
 
 
